@@ -1,5 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
+import Image from '../Image';
 
 const products = [
   {
@@ -7,28 +8,28 @@ const products = [
     name: 'Ultra jacket in technical shell',
     designer: 'Loewe x On',
     price: 'SAR 850.00',
-    image: '/editorial/editorial-1.png',
+    image: 'editorial/editorial-1_aihupa',
   },
   {
     id: 2,
     name: 'Soft bra in technical jersey',
     designer: 'Loewe x On',
     price: 'SAR 1,700.00',
-    image: '/editorial/editorial-2.png',
+    image: 'editorial/editorial-2_lomfwi',
   },
   {
     id: 3,
     name: 'Active tights in technical jersey',
     designer: 'Loewe x On',
     price: 'SAR 2,500.00',
-    image: '/editorial/editorial-3.png',
+    image: 'editorial/editorial-3_kjdmzv',
   },
   {
     id: 4,
     name: 'Cloudventure 2.0 sneaker',
     designer: 'Loewe x On',
     price: 'SAR 1,200.00',
-    image: '/editorial/editorial-4.png',
+    image: 'editorial/editorial-4_c7ox7x',
   },
 ];
 
@@ -64,12 +65,8 @@ export default function Editorial() {
 function Edit() {
   return (
     <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black  pt-[172px]">
-      <div className="px-8 lg:px-16 absolute top-0 left-0 h-full w-full">
-        <img
-          src="/editorial/editorial-outfit.png"
-          alt="Editorial Hero"
-          className="w-full h-full object-contain"
-        />
+      <div className="px-8 lg:px-16 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+        <Image id="editorial/editorial-outfit_zcjqge" />
       </div>
       <header className="p-4 lg:p-8 relative">
         <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
@@ -94,11 +91,9 @@ function Card({ product, firstRow }: { product: (typeof products)[0]; firstRow: 
       )}
     >
       <div className="flex justify-center items-center px-8 lg:px-16 lg:pt-20 h-full relative">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-contain absolute top-0 left-0 "
-        />
+        <div className="w-full h-full  absolute top-0 left-0 [&_img]:object-contain [&_img]:w-full [&_img]:h-full ">
+          <Image id={product.image} />
+        </div>
       </div>
       <div className="flex flex-col gap-1 lg:gap-0 p-4 lg:p-8">
         <p className="text-gray-400 uppercase text-xs lg:text-sm">{product.designer}</p>

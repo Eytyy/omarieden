@@ -5,8 +5,8 @@ const women_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 1,200.00',
     images: {
-      default: '/women/jacket.png',
-      hover: '/women/jacket-model.png',
+      default: 'women/jacket_cxivp4',
+      hover: 'women/jacket-model_phu2kg',
     },
   },
   {
@@ -15,8 +15,8 @@ const women_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 2,500.00',
     images: {
-      default: '/women/dress2.png',
-      hover: '/women/dress2-model.png',
+      default: 'women/dress2_lv6e5u',
+      hover: 'women/dress2-model_r2nirh',
     },
   },
   {
@@ -25,8 +25,8 @@ const women_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 850.00',
     images: {
-      default: '/women/dress.png',
-      hover: '/women/dress-model.png',
+      default: 'women/dress_infz8s',
+      hover: 'women/dress-model_goio6h',
     },
   },
   {
@@ -35,8 +35,8 @@ const women_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 1,700.00',
     images: {
-      default: '/women/skirt.png',
-      hover: '/women/skirt-model.png',
+      default: 'women/skirt_u6vsnj',
+      hover: 'women/skirt-model_agtwjp',
     },
   },
   {
@@ -45,8 +45,8 @@ const women_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 950.00',
     images: {
-      default: '/women/pants.png',
-      hover: '/women/pants-model.png',
+      default: 'women/pants_rgijxz',
+      hover: 'women/pants-model_nmjbps',
     },
   },
 ];
@@ -58,8 +58,8 @@ const menu_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 1,200.00',
     images: {
-      default: '/men/pants.png',
-      hover: '/men/pants-model.png',
+      default: 'men/image_5_kqwyxz',
+      hover: 'men/image_4_koshod',
     },
   },
   {
@@ -68,8 +68,8 @@ const menu_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 2,500.00',
     images: {
-      default: '/men/shirt.png',
-      hover: '/men/shirt-model.png',
+      default: 'men/shirt_jvkaqu',
+      hover: 'men/shirt-model_wzcewf',
     },
   },
   {
@@ -78,8 +78,8 @@ const menu_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 850.00',
     images: {
-      default: '/men/jacket.png',
-      hover: '/men/jacket-model.png',
+      default: 'men/jacket_lnjfl8',
+      hover: 'men/jacket-model_io9sxy',
     },
   },
   {
@@ -88,8 +88,8 @@ const menu_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 1,700.00',
     images: {
-      default: '/men/jacket2-model.png',
-      hover: '/men/jacket2.png',
+      default: 'men/jacket2-model_ckkvn6',
+      hover: 'men/jacket2_hdgwoa',
     },
   },
   {
@@ -98,8 +98,8 @@ const menu_new = [
     designer: 'Studio Nicholson',
     price: 'SAR 950.00',
     images: {
-      default: '/men/sweater.png',
-      hover: '/men/sweater-model.png',
+      default: 'men/sweater_jdqivu',
+      hover: 'men/sweater-model_ijugj3',
     },
   },
 ];

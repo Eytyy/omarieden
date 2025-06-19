@@ -6,8 +6,8 @@ import Lenis from './components/providers/Lenis';
 import { ThemeProvider } from './components/providers/Theme';
 import Carousel from './components/sections/Carousel';
 import Editorial from './components/sections/Editorial';
-import GridTypeA from './components/sections/GridTypeA';
-import GridTypeB from './components/sections/GridTypeB';
+import Highlights from './components/sections/Highlights';
+import Collections from './components/sections/Collections';
 import Slider from './components/sections/Slider';
 import SectionsArea from './components/SectionsArea';
 import { products } from './data/products';
@@ -25,8 +25,8 @@ function App() {
               <Carousel title="Women New Arrivals" products={products.wommen} />
               <Carousel title="Men New Arrivals" products={products.men} />
               <Slider />
-              <GridTypeB />
-              <GridTypeA />
+              <Collections />
+              <Highlights />
               <Editorial />
             </SectionsArea>
             <Footer />

@@ -1,3 +1,5 @@
+import Image from './Image';
+
 export default function ProductCard({
   designer,
   name,
@@ -17,16 +19,12 @@ export default function ProductCard({
       <div className="flex justify-center items-center px-8 lg:px-16">
         <div className="w-full h-full justify-center items-center group relative">
           {/* <div className="dark:bg-white bg-black rounded-full w-full aspect-square" /> */}
-          <img
-            src={images.default}
-            alt={name}
-            className="w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300"
-          />
-          <img
-            src={images.hover}
-            alt={name}
-            className="w-full h-full object-contain absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
+          <div className="w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+            <Image id={images.default} />
+          </div>
+          <div className="w-full h-full object-contain absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+            <Image id={images.hover} />
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-1 lg:gap-0 p-4 lg:p-8">

@@ -11,7 +11,7 @@ const slides = [
       'Introducing the first delivery from Omarieden Women Summer 2025, designed for summer gateways and warm weather. This collection features lightweight fabrics, vibrant colors, and elegant silhouettes that embody the essence of summer fashion.',
     media: {
       type: 'video',
-      src: '/video.mp4',
+      src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361644/fmnkcjtz1rvq7arg6dzu.mp4',
       poster: '/poster.jpg',
     },
   },
@@ -22,7 +22,7 @@ const slides = [
       'Explore transitional basics, spring-ready outwear, and occasionwear designed with an emphasis on texture',
     media: {
       type: 'video',
-      src: '/video3.mp4',
+      src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361676/tivmprok6uxza7gr7k3m.mp4',
       poster: '/poster.jpg',
     },
   },
