@@ -15,7 +15,7 @@ const items = [
     title: 'Loewe',
     images: {
       default: 'brands/loewe-w_gqerho',
-      hover: 'brands/acne-w_djldez',
+      hover: 'brands/loewe-m_uim7is',
     },
   },
   {
