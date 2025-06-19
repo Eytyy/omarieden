@@ -1,6 +1,7 @@
+import { useInView } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
-import { FaRegImage } from 'react-icons/fa6';
+import React from 'react';
 
 const slides = [
   {
@@ -8,18 +9,22 @@ const slides = [
     title: 'Omarieden Women Summery 2025 Delivery I',
     description:
       'Introducing the first delivery from Omarieden Women Summer 2025, designed for summer gateways and warm weather. This collection features lightweight fabrics, vibrant colors, and elegant silhouettes that embody the essence of summer fashion.',
+    media: {
+      type: 'video',
+      src: '/video.mp4',
+      poster: '/poster.jpg',
+    },
   },
   {
     id: 2,
     title: 'Omarieden Women Spring 2025',
     description:
       'Explore transitional basics, spring-ready outwear, and occasionwear designed with an emphasis on texture',
-  },
-  {
-    id: 3,
-    title: 'Omarieden Women Spring Lounge 2025',
-    description:
-      'Lightweight layers designed with Omarieden-branded mesh, sleek modal jersey, and brushed knit blends.',
+    media: {
+      type: 'video',
+      src: '/video3.mp4',
+      poster: '/poster.jpg',
+    },
   },
 ];
 export default function Slider() {
@@ -32,7 +37,7 @@ export default function Slider() {
   const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="h-screen justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
+    <div className="aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
       <div className="embla h-full relative">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom h-full">
@@ -42,7 +47,7 @@ export default function Slider() {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 font-display text-2xl absolute bottom-8 right-8">
+      <div className="flex gap-1 font-display text-2xl absolute bottom-0 right-0 p-4 lg:p-8">
         <button className="cursor-pointer" onClick={onPrevButtonClick} aria-label="Previous Slide">
           &larr;
         </button>
@@ -56,15 +61,45 @@ export default function Slider() {
 
 function Slide({ slide }: { slide: (typeof slides)[number]; index: number }) {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#111] text-white  embla__slide [transform:_translate3d(0,0,0)] min-w-0  flex-[0_0_100%] h-full relative ">
-      <div className="text-4xl font-display absolute w-full h-full top-0 left-0 flex flex-col items-center justify-center  hover:scale-110 ">
-        <FaRegImage />
+    <div className="flex flex-col items-center justify-center embla__slide [transform:_translate3d(0,0,0)] min-w-0 flex-[0_0_100%] h-full relative ">
+      <div className="h-screen text-4xl font-display bg-[#111] w-full flex flex-col items-center justify-center  text-white/50">
+        {slide.media.type === 'video' ? (
+          <Video src={slide.media.src} poster={slide.media.poster} />
+        ) : (
+          <img src={slide.media.src} alt={slide.title} className="w-full h-full object-cover" />
+        )}
       </div>
 
-      <div className="absolute bottom-8 left-8 w-3/4">
-        <h2 className="text-4xl">{slide.title}</h2>
-        <p className="mt-4 max-w-[60ch]">{slide.description}</p>
+      <div className="absolute bottom-0 left-0 p-4 lg:p-8 w-3/4  text-white ">
+        <h2 className="text-2xl leading-[1.1] lg:text-4xl">{slide.title}</h2>
+        <p className="mt-4 max-w-[60ch] text-sm lg:text-base">{slide.description}</p>
       </div>
     </div>
   );
 }
+
+const Video = ({ src, poster }: { src: string; poster?: string }) => {
+  const ref = React.useRef<HTMLVideoElement>(null);
+  const inView = useInView(ref, { amount: 0.75 });
+
+  React.useEffect(() => {
+    if (inView && ref.current) {
+      console.log('Video is in view, playing...');
+      ref.current.play().catch((error) => console.error('Video play error:', error));
+    } else if (ref.current) {
+      console.log('Video is out of view, pausing...');
+      ref.current.pause();
+    }
+  }, [inView]);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      className="w-full h-auto object-cover absolute top-0 left-0"
+    />
+  );
+};

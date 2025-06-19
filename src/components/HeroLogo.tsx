@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function HeroLogo() {
   return (
     <svg
-      className="w-full max-h-full h-auto fill-black dark:fill-white"
+      className="mx-auto p-8 w-full md:max-w-2/3  2xl:max-h-full  h-auto fill-black dark:fill-white hero--logo"
       viewBox="0 0 711 711"
       xmlns="http://www.w3.org/2000/svg"
     >

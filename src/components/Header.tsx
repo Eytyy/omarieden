@@ -1,11 +1,11 @@
-import MainNav from './MainNav';
-import UserNav from './UserNav';
+import DesktopNav from './desktop-navigation/DesktopNav';
+import MobileNav from './mobile-navigation/MobileNav';
 
 export default function Header() {
   return (
     <>
-      <MainNav />
-      <UserNav />
+      <DesktopNav />
+      <MobileNav />
     </>
   );
 }

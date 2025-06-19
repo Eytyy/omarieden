@@ -40,8 +40,8 @@ const FooterMenus = [
 
 export default function Footer() {
   return (
-    <div className="bg-white relative min-h-screen lg:h-screen flex flex-col justify-end dark:bg-black">
-      <div className="py-4 lg:py-0">
+    <div className="bg-white relative lg:min-h-screen flex flex-col justify-end dark:bg-black">
+      <div className="py-4 lg:py-0 lg:pt-[172px]">
         <FooterLogo />
       </div>
       <div className="p-4 lg:p-8 pt-0 flex justify-between gap-4 lg:gap-8 text-sm flex-wrap">
@@ -59,7 +59,7 @@ export default function Footer() {
             </ul>
           </div>
         ))}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 w-full lg:w-auto">
           <h3 className="font-display">Updates</h3>
           <p className="max-w-[40ch]">
             Give us your email in exchange for sneak peeks of new drops, invites to Omerieden
@@ -69,7 +69,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="border border-gray-300 rounded p-2"
+              className="border border-gray-300 rounded p-2 w["
             />
             <button
               type="submit"

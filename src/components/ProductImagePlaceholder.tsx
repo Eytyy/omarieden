@@ -1,7 +1,14 @@
-export default function ProductImagePlaceholder() {
+import { cn } from '../lib/utils';
+
+export default function ProductImagePlaceholder({ className }: { className?: string }) {
   return (
-    <div className="flex justify-center items-center w-full">
-      <div className="dark:bg-white bg-black rounded-full  w-1/2 lg:w-1/3 aspect-square" />
+    <div
+      className={cn(
+        'flex absoltue top-0 left-0 w-full h-full justify-center items-center',
+        className
+      )}
+    >
+      <div className="dark:bg-white bg-black rounded-full h-full aspect-square" />
     </div>
   );
 }

@@ -1,10 +1,30 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import ProductImagePlaceholder from '../ProductImagePlaceholder';
 
 const items = [
-  { id: 1, title: 'Marni' },
-  { id: 2, title: 'Acni' },
-  { id: 3, title: 'Loewe' },
+  {
+    id: 1,
+    title: 'Marni',
+    images: {
+      default: '/brands/marni-m.png',
+      hover: '/brands/marni-w.png',
+    },
+  },
+  {
+    id: 3,
+    title: 'Loewe',
+    images: {
+      default: '/brands/loewe-w.png',
+      hover: '/brands/loewe-m.png',
+    },
+  },
+  {
+    id: 2,
+    title: 'Acne',
+    images: {
+      default: '/brands/acne-m.png',
+      hover: '/brands/acne-w.png',
+    },
+  },
 ];
 export default function GridTypeA() {
   const [emblaRef] = useEmblaCarousel({
@@ -12,22 +32,25 @@ export default function GridTypeA() {
     align: 'start',
     loop: true,
     active: true,
-    breakpoints: { '(min-width: 1024px)': { active: false } },
+    breakpoints: { '(min-width: 1536px)': { active: false } },
   });
   return (
-    <section className="grid lg:grid-cols-4 border-b dark:border-b-white lg:min-h-[50vh]">
-      <header className="p-4 lg:p-8 flex flex-col justify-end gap-2">
+    <section className="grid lg:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black lg:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh]">
+      <header className="p-4 pt-8 lg:p-8  lg:pt-[172px] flex flex-col lg:justify-end gap-1 lg:gap-2 bg-white dark:bg-black lg:border-r">
         <div>
-          <h2 className="text-3xl uppercase">Brands Highlight of the Month</h2>
-          <p>A curated selection of brands that are redefining the fashion scene.</p>
+          <h2 className="text-2xl leading-[1.1] lg:text-3xl uppercase">
+            Brands Highlight of the Month
+          </h2>
+          <p className="leading-[1.3] text-sm lg:base">
+            A curated selection of brands that are redefining the fashion scene.
+          </p>
         </div>
-        <a href="#" className="uppercase h-[36px] items-center flex gap-2">
-          <div className="font-display text-3xl w-5 flex justify-center">+</div>
-          <div>SHOP ALL BRANDS</div>
-        </a>
       </header>
-      <div className="col-span-3 embla__viewport overflow-hidden h-full" ref={emblaRef}>
-        <div className="flex touch-pan-y touch-pinch-zoom lg:grid lg:grid-cols-3 h-full">
+      <div
+        className="lg:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full pt-8 lg:pt-20"
+        ref={emblaRef}
+      >
+        <div className="flex touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-3 h-full">
           {items.map((item) => (
             <Card key={item.id} item={item} />
           ))}
@@ -37,12 +60,34 @@ export default function GridTypeA() {
   );
 }
 
-function Card({ item }: { item: { id: number; title: string } }) {
+function Card({
+  item,
+}: {
+  item: {
+    id: number;
+    title: string;
+    images: {
+      default: string;
+      hover: string;
+    };
+  };
+}) {
   return (
-    <div className="grid grid-rows-[1fr_min-content] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%]">
-      <ProductImagePlaceholder />
-      <div className="p-8">
-        <p className="text-gray-400 uppercase">{item.title}</p>
+    <div className="flex flex-col justify-between group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]">
+      <div className="px-8 lg:px-16 grow-1 flex flex-col justify-center items-center group relative">
+        <img
+          src={item.images.default}
+          alt={item.title}
+          className="absolute top-0 w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300"
+        />
+        <img
+          src={item.images.hover}
+          alt={item.title}
+          className="absolute top-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        />
+      </div>
+      <div className="p-4 lg:p-8">
+        <p className="text-sm lg:text-base text-gray-400 uppercase">{item.title}</p>
       </div>
     </div>
   );

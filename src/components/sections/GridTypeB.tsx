@@ -1,46 +1,74 @@
-import ProductImagePlaceholder from '../ProductImagePlaceholder';
-
 export default function GridTypeB() {
   return (
-    <section className="grid lg:grid-cols-2 border-b border-b-black dark:border-b-white ">
+    <section className="grid lg:grid-cols-2 lg:border-b border-b-black dark:border-b-white ">
       <Card
         title="The Marni Summer Collection"
         subtitle="A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color"
+        images={{
+          default: '/collections/marni.png',
+          hover: '/collections/marni-hover.png',
+        }}
       />
       <Card
         title="The Acne Studios Summer Collection"
         subtitle="A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color"
+        images={{
+          default: '/collections/acne.png',
+          hover: '/collections/acne-hover.png',
+        }}
       />
     </section>
   );
 }
 
-function Card({ title, subtitle }: { title: string; subtitle?: string }) {
+function Card({
+  title,
+  subtitle,
+  images,
+}: {
+  title: string;
+  subtitle?: string;
+  images: {
+    default: string;
+    hover: string;
+  };
+}) {
   return (
-    <div className="flex flex-col p-8 bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-full">
-      <div className="aspect-square flex justify-center items-center">
-        <ProductImagePlaceholder />
+    <div className="grid grid-rows-[1fr_min-content]  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-screen">
+      <div className="pt-[172px] px-8 lg:px-16 relative">
+        <div className="relative w-full h-full group">
+          <img
+            src={images.default}
+            alt={title}
+            className="absolute top-0 w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300"
+          />
+          <img
+            src={images.hover}
+            alt={title}
+            className="absolute top-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          />
+        </div>
       </div>
-      <div className="flex flex-col gap-2">
-        <Header title={title} subtitle={subtitle} />
-        <CTA title="SHOP The Collection" />
+      <div className="flex flex-col gap-2 p-4 lg:p-8 relative">
+        <CardHeader title={title} subtitle={subtitle} />
+        <CardCTA title="SHOP The Collection" />
       </div>
     </div>
   );
 }
 
-function Header({ title, subtitle }: { title: string; subtitle?: string }) {
+function CardHeader({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <header className="flex flex-col gap-2">
-      <h2 className="text-4xl">{title}</h2>
-      {subtitle && <p>{subtitle}</p>}
+      <h2 className="text-2xl leading-[1.1] lg:text-4xl">{title}</h2>
+      {subtitle && <p className="text-sm">{subtitle}</p>}
     </header>
   );
 }
 
-function CTA({ title }: { title: string }) {
+function CardCTA({ title }: { title: string }) {
   return (
-    <a href="#" className="uppercase h-[36px] items-center flex gap-2">
+    <a href="#" className="uppercase h-[36px] items-center flex gap-2 text-sm">
       <div className="font-display text-3xl w-5 flex justify-center">+</div>
       <div>{title}</div>
     </a>

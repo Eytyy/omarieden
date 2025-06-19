@@ -1,4 +1,5 @@
 import Footer from './components/Footer';
+import GridLinesBackground from './components/GridLinesBackground';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Lenis from './components/providers/Lenis';
@@ -9,24 +10,20 @@ import GridTypeA from './components/sections/GridTypeA';
 import GridTypeB from './components/sections/GridTypeB';
 import Slider from './components/sections/Slider';
 import SectionsArea from './components/SectionsArea';
+import { products } from './data/products';
 
 function App() {
   return (
     <ThemeProvider>
       <Lenis>
-        <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white grid grid-cols-[2fr_1fr]">
-          <div className="fixed grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 h-screen w-full left-0 top-0 hidden md:grid">
-            <div className="border-r" />
-            <div className="border-r lg:block hidden" />
-            <div className="border-r hidden 2xl:block" />
-            <div />
-          </div>
+        <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white lg:grid lg:grid-cols-[2fr_1fr]">
+          <GridLinesBackground />
           <Header />
-          <div className="col-span-full">
+          <div className="col-span-full ">
             <Hero />
             <SectionsArea>
-              <Carousel title="Women New Arrivals" />
-              <Carousel title="Men New Arrivals" />
+              <Carousel title="Women New Arrivals" products={products.wommen} />
+              <Carousel title="Men New Arrivals" products={products.men} />
               <Slider />
               <GridTypeB />
               <GridTypeA />
