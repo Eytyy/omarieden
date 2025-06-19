@@ -23,7 +23,7 @@ const items = [
     title: 'Acne',
     images: {
       default: 'brands/acne-m_ecrahp',
-      hover: 'brands/acne-w.png',
+      hover: 'brands/acne-w_djldez',
     },
   },
 ];
