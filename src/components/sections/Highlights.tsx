@@ -5,26 +5,17 @@ const items = [
   {
     id: 1,
     title: 'Marni',
-    images: {
-      default: 'brands/marni-m_ypj0vx',
-      hover: 'brands/marni-w_ioaw5g',
-    },
+    images: { default: 'brands/marni-m_ypj0vx', hover: 'brands/marni-w_ioaw5g' },
   },
   {
     id: 3,
     title: 'Loewe',
-    images: {
-      default: 'brands/loewe-w_gqerho',
-      hover: 'brands/loewe-m_uim7is',
-    },
+    images: { default: 'brands/loewe-w_gqerho', hover: 'brands/loewe-m_uim7is' },
   },
   {
     id: 2,
     title: 'Acne',
-    images: {
-      default: 'brands/acne-m_ecrahp',
-      hover: 'brands/acne-w_djldez',
-    },
+    images: { default: 'brands/acne-m_ecrahp', hover: 'brands/acne-w_djldez' },
   },
 ];
 
@@ -37,8 +28,8 @@ export default function Highlights() {
     breakpoints: { '(min-width: 1536px)': { active: false } },
   });
   return (
-    <section className="grid lg:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black lg:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] lg:pt-20">
-      <header className="p-4 pt-8 lg:p-8 flex flex-col lg:justify-end gap-1 lg:gap-2 bg-white dark:bg-black lg:border-r">
+    <section className="grid md:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black md:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] lg:pt-20">
+      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:border-r">
         <div>
           <h2 className="text-2xl leading-[1.1] lg:text-3xl uppercase">
             Brands Highlight of the Month
@@ -49,7 +40,7 @@ export default function Highlights() {
         </div>
       </header>
       <div
-        className="lg:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full"
+        className="md:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full"
         ref={emblaRef}
       >
         <div className="flex touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-3 h-full">
@@ -75,8 +66,8 @@ function Card({
   };
 }) {
   return (
-    <div className="flex flex-col justify-between group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]">
-      <div className="grow-1 flex flex-col justify-center items-center group relative">
+    <div className="grid grid-rows-[1fr_min-content] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]">
+      <div className="group relative w-full aspect-square lg:aspect-auto">
         <div className="[&_img]:object-contain [&_img]:w-full [&_img]:h-full absolute inset-4 lg:inset-8 group-hover:opacity-0 transition-opacity duration-300">
           <Image id={item.images.default} />
         </div>
