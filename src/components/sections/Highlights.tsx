@@ -37,8 +37,8 @@ export default function Highlights() {
     breakpoints: { '(min-width: 1536px)': { active: false } },
   });
   return (
-    <section className="grid lg:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black lg:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh]">
-      <header className="p-4 pt-8 lg:p-8  lg:pt-[172px] flex flex-col lg:justify-end gap-1 lg:gap-2 bg-white dark:bg-black lg:border-r">
+    <section className="grid lg:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black lg:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] lg:pt-20">
+      <header className="p-4 pt-8 lg:p-8 flex flex-col lg:justify-end gap-1 lg:gap-2 bg-white dark:bg-black lg:border-r">
         <div>
           <h2 className="text-2xl leading-[1.1] lg:text-3xl uppercase">
             Brands Highlight of the Month
@@ -49,7 +49,7 @@ export default function Highlights() {
         </div>
       </header>
       <div
-        className="lg:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full pt-8 lg:pt-20"
+        className="lg:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full"
         ref={emblaRef}
       >
         <div className="flex touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-3 h-full">
@@ -76,11 +76,11 @@ function Card({
 }) {
   return (
     <div className="flex flex-col justify-between group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]">
-      <div className="px-8 lg:px-16 grow-1 flex flex-col justify-center items-center group relative">
-        <div className="[&_img]:object-contain [&_img]:w-full [&_img]:h-full absolute top-0 w-full h-full group-hover:opacity-0 transition-opacity duration-300">
+      <div className="grow-1 flex flex-col justify-center items-center group relative">
+        <div className="[&_img]:object-contain [&_img]:w-full [&_img]:h-full absolute inset-4 lg:inset-8 group-hover:opacity-0 transition-opacity duration-300">
           <Image id={item.images.default} />
         </div>
-        <div className="absolute top-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+        <div className="absolute inset-4 lg:inset-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
           <Image id={item.images.hover} />
         </div>
       </div>

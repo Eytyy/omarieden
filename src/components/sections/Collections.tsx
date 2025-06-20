@@ -37,7 +37,7 @@ function Card({
 }) {
   return (
     <div className="grid grid-rows-[1fr_min-content]  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-screen">
-      <div className="pt-20 px-8 lg:px-16 relative">
+      <div className="pt-20 px-4 lg:px-8 relative">
         <div className="relative w-full h-full group">
           <div className="absolute top-0 w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
             <Image id={images.default} />

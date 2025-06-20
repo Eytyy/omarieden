@@ -16,7 +16,7 @@ export default function ProductCard({
 }) {
   return (
     <div>
-      <div className="flex justify-center items-center px-8 lg:px-16">
+      <div className="flex justify-center items-center px-4 lg:px-8">
         <div className="w-full h-full justify-center items-center group relative">
           {/* <div className="dark:bg-white bg-black rounded-full w-full aspect-square" /> */}
           <div className="w-full h-full object-contain group-hover:opacity-0 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">

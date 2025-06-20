@@ -65,7 +65,7 @@ export default function Editorial() {
 function Edit() {
   return (
     <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-[66.66vh] lg:h-auto">
-      <div className="px-8 lg:px-16 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+      <div className="px-4 lg:px-8 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
         <Image id="editorial/editorial-outfit_zcjqge" />
       </div>
       <header className="p-4 lg:p-8 relative">
@@ -90,7 +90,7 @@ function Card({ product, firstRow }: { product: (typeof products)[0]; firstRow: 
         firstRow ? 'lg:border-b 2xl:border-b' : 'lg:border-b 2xl:border-b-0'
       )}
     >
-      <div className="flex justify-center items-center px-8 lg:px-16 lg:pt-20 h-full relative">
+      <div className="flex justify-center items-center px-4 lg:px-8 lg:pt-20 h-full relative">
         <div className="w-full h-full  absolute top-0 left-0 [&_img]:object-contain [&_img]:w-full [&_img]:h-full ">
           <Image id={product.image} />
         </div>
