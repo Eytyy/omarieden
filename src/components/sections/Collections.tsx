@@ -1,24 +1,63 @@
-import Image from '../Image';
+import { useLang } from '../providers/LangProvider';
+import Image from '../ui/Image';
+
+const data_en = [
+  {
+    title: 'The Marni Summer Collection',
+    subtitle:
+      'A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color',
+    images: {
+      default: 'collections/marni_gpelj1',
+      hover: 'collections/marni-hover_syuxzh',
+    },
+  },
+  {
+    title: 'The Acne Studios Summer Collection',
+    subtitle:
+      'A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color',
+    images: {
+      default: 'collections/acni_zw9tza',
+      hover: 'collections/acni-hover_d7izi8',
+    },
+  },
+];
+
+const data_ar = [
+  {
+    title: 'مجموعة مارني لصيف 2025',
+    subtitle:
+      'احتفال بأكثر قطع الموسم حيوية، من حقيبة هاموك الأيقونية إلى حقيبة بزل الجديدة بلون محدود الإصدار',
+    images: {
+      default: 'collections/marni_gpelj1',
+      hover: 'collections/marni-hover_syuxzh',
+    },
+  },
+  {
+    title: 'مجموعة أكني ستوديوز لصيف 2025',
+    subtitle:
+      'احتفال بأكثر قطع الموسم حيوية، من حقيبة هاموك الأيقونية إلى حقيبة بزل الجديدة بلون محدود الإصدار',
+    images: {
+      default: 'collections/acni_zw9tza',
+      hover: 'collections/acni-hover_d7izi8',
+    },
+  },
+];
 
 export default function Collections() {
+  const { lang } = useLang();
+  const data = lang === 'ar' ? data_ar : data_en;
+
   return (
     <section className="grid lg:grid-cols-2 lg:border-b border-b-black dark:border-b-white ">
-      <Card
-        title="The Marni Summer Collection"
-        subtitle="A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color"
-        images={{
-          default: 'collections/marni_gpelj1',
-          hover: 'collections/marni-hover_syuxzh',
-        }}
-      />
-      <Card
-        title="The Acne Studios Summer Collection"
-        subtitle="A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color"
-        images={{
-          default: 'collections/acni_zw9tza',
-          hover: 'collections/acni-hover_d7izi8',
-        }}
-      />
+      {data.map((item, index) => (
+        <Card
+          key={index}
+          title={item.title}
+          subtitle={item.subtitle}
+          images={item.images}
+          lang={lang}
+        />
+      ))}
     </section>
   );
 }
@@ -27,9 +66,11 @@ function Card({
   title,
   subtitle,
   images,
+  lang,
 }: {
   title: string;
   subtitle?: string;
+  lang: string;
   images: {
     default: string;
     hover: string;
@@ -49,7 +90,7 @@ function Card({
       </div>
       <div className="flex flex-col gap-2 p-4 lg:p-8 relative">
         <CardHeader title={title} subtitle={subtitle} />
-        <CardCTA title="SHOP The Collection" />
+        <CardCTA title={lang == 'en' ? 'SHOP The Collection' : 'تسوق المجموعة'} />
       </div>
     </div>
   );

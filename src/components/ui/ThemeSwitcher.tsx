@@ -1,9 +1,9 @@
 'use client';
 import { useContext } from 'react';
-import { ThemeContext } from './providers/Theme';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import OmarIconApath from './icons/OmarIconApath';
-import OmerIconBpath from './icons/OmerIconBpath';
+import { ThemeContext } from '../providers/Theme';
+import OmarIconApath from '../icons/OmarIconApath';
+import OmerIconBpath from '../icons/OmerIconBpath';
 
 export default function ThemeSwitcher() {
   const themeContext = useContext(ThemeContext);

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { easeInOut, motion } from 'framer-motion';
 
-import HomeIcon from '../HomeIcon';
 import MenuBlock from './MenuBlock';
 import { menu } from '../../data/main-menu';
 import MainNav from './MainNav';
 import UserNav from './UserNav';
+import HomeIcon from '../ui/HomeIcon';
+import { useLang } from '../providers/LangProvider';
+import { cn } from '../../lib/utils';
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const { setLang, lang } = useLang();
 
   // hide the menu on scroll, show on scroll up or if near bottom (137px from bottom)
   const [isVisible, setIsVisible] = useState(true);
@@ -19,7 +22,6 @@ export default function MobileNav() {
       const windowHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
       const isNearBottom = scrollTop + windowHeight >= docHeight - 137;
-
       if (isOpen) {
         return;
       }
@@ -53,14 +55,24 @@ export default function MobileNav() {
           <div className="grid grid-cols-4 border-b">
             <ToggleBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
             <MenuBlock>
-              <a href="/">
+              <button
+                className={cn('cursor-pointer', lang == 'en' ? 'font-display' : '')}
+                onClick={() => setLang('en')}
+                aria-label="Change Language to English"
+                title="Change Language to English"
+              >
                 <span className="font-display">EN</span>
-              </a>
+              </button>
             </MenuBlock>
             <MenuBlock className="border-r-0">
-              <a href="/">
+              <button
+                className={cn('cursor-pointer', lang == 'ar' ? 'font-display' : '')}
+                onClick={() => setLang('ar')}
+                aria-label="Change Language to Arabic"
+                title="Change Language to Arabic"
+              >
                 <span>AR</span>
-              </a>
+              </button>
             </MenuBlock>
           </div>
           <UserNav />

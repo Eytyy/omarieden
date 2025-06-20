@@ -1,5 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import Image from '../Image';
+import Image from '../ui/Image';
+import { useLang } from '../providers/LangProvider';
 
 const items = [
   {
@@ -20,22 +21,26 @@ const items = [
 ];
 
 export default function Highlights() {
+  const { lang } = useLang();
   const [emblaRef] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
     loop: true,
     active: true,
     breakpoints: { '(min-width: 1536px)': { active: false } },
+    direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
   return (
     <section className="grid md:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black md:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] lg:pt-20">
-      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:border-r">
+      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l">
         <div>
           <h2 className="text-2xl leading-[1.1] lg:text-3xl uppercase">
-            Brands Highlight of the Month
+            {lang == 'en' ? 'Brands Highlight of the Month' : 'أبرز العلامات التجارية لهذا الشهر'}
           </h2>
           <p className="leading-[1.3] text-sm lg:base">
-            A curated selection of brands that are redefining the fashion scene.
+            {lang == 'en'
+              ? 'A curated selection of brands that are redefining the fashion scene.'
+              : 'مجموعة مختارة من العلامات التجارية التي تعيد تعريف مشهد الموضة.'}
           </p>
         </div>
       </header>

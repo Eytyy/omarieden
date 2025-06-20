@@ -2,8 +2,9 @@ import { useInView } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import React from 'react';
+import { useLang } from '../providers/LangProvider';
 
-const slides = [
+const slides_en = [
   {
     id: 1,
     title: 'Omarieden Women Summery 2025 Delivery I',
@@ -27,15 +28,43 @@ const slides = [
     },
   },
 ];
+
+const slides_ar = [
+  {
+    id: 1,
+    title: 'أوماريدن - مجموعة النساء ربيع 2025',
+    description:
+      'استكشف الأساسيات الانتقالية، والملابس الخارجية المناسبة للربيع، وملابس المناسبات المصممة مع التركيز على الملمس.',
+    media: {
+      type: 'video',
+      src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361676/tivmprok6uxza7gr7k3m.mp4',
+      poster: '/poster.jpg',
+    },
+  },
+  {
+    id: 2,
+    title: 'أوماريدن - مجموعة النساء صيف 2025',
+    description:
+      'تقديم أول مجموعة من أوماريدن للنساء لصيف 2025، مصممة للرحلات الصيفية والأجواء الدافئة. تتميز هذه المجموعة بأقمشة خفيفة الوزن، وألوان زاهية، وقصات أنيقة تجسد جوهر الموضة الصيفية.',
+    media: {
+      type: 'video',
+      src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361644/fmnkcjtz1rvq7arg6dzu.mp4',
+      poster: '/poster.jpg',
+    },
+  },
+];
+
 export default function Slider() {
+  const { lang } = useLang();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
     loop: true,
+    direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
 
   const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
-
+  const slides = lang === 'ar' ? slides_ar : slides_en;
   return (
     <div className="aspect-square lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
       <div className="embla h-full relative">
@@ -47,7 +76,7 @@ export default function Slider() {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 font-display text-2xl absolute bottom-0 right-0 p-4 lg:p-8">
+      <div className="flex gap-1 font-display text-2xl absolute bottom-0 rtl:left-0 ltr:right-0 p-4 lg:p-8 rtl:flex-row-reverse">
         <button className="cursor-pointer" onClick={onPrevButtonClick} aria-label="Previous Slide">
           &larr;
         </button>
@@ -70,7 +99,7 @@ function Slide({ slide }: { slide: (typeof slides)[number]; index: number }) {
         )}
       </div>
 
-      <div className="absolute bottom-0 left-0 p-4 lg:p-8 w-3/4  text-white ">
+      <div className="absolute bottom-0 rtl:right-0 ltr:left-0 p-4 lg:p-8 w-3/4  text-white ">
         <h2 className="text-2xl leading-[1.1] lg:text-4xl">{slide.title}</h2>
         <p className="mt-4 max-w-[60ch] text-sm lg:text-base">{slide.description}</p>
       </div>

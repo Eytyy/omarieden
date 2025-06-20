@@ -1,6 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
-import Image from '../Image';
+import Image from '../ui/Image';
+import { useLang } from '../providers/LangProvider';
 
 const products = [
   {
@@ -34,11 +35,13 @@ const products = [
 ];
 
 export default function Editorial() {
+  const { lang } = useLang();
   const [emblaRef] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
     loop: true,
     active: true,
+    direction: lang === 'ar' ? 'rtl' : 'ltr',
     breakpoints: {
       '(min-width: 1024px)': { axis: 'y' },
       '(min-width: 1536px)': { active: false },
@@ -46,7 +49,7 @@ export default function Editorial() {
   });
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white">
-      <Edit />
+      <Edit lang={lang} />
       <div className="2xl:col-span-2 overflow-hidden" ref={emblaRef}>
         <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
           {products.map((product, i) => (
@@ -62,20 +65,22 @@ export default function Editorial() {
   );
 }
 
-function Edit() {
+function Edit({ lang }: { lang: 'en' | 'ar' }) {
   return (
-    <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-[66.66vh] lg:h-auto">
+    <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:rtl:border-l lg:ltr:border-r relative dark:bg-black h-[66.66vh] lg:h-auto">
       <div className="px-4 lg:px-8 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
         <Image id="editorial/editorial-outfit_zcjqge" />
       </div>
       <header className="p-4 lg:p-8 relative">
         <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
-          Editorial
+          {lang == 'en' ? 'Editorial' : 'المجلة التحريرية'}
         </a>
-        <h2 className="text-2xl leading-[1.1] lg:text-4xl">FOCUS ON: ACTIVE</h2>
+        <h2 className="text-2xl leading-[1.1] lg:text-4xl">
+          {lang == 'en' ? 'FOCUS ON: ACTIVE' : 'التركيز على: النشاط'}
+        </h2>
         <a href="#" className="uppercase h-[36px] items-center flex gap-2 text-sm">
           <div className="font-display text-3xl w-5 flex justify-center">+</div>
-          <div>SHOP The Edit</div>
+          <div>{lang == 'en' ? 'SHOP The Edit' : 'تسوق المجلة التحريرية'}</div>
         </a>
       </header>
     </div>

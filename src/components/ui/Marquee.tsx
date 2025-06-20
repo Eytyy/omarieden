@@ -1,6 +1,6 @@
 'use client';
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export function Marquee({
   children,

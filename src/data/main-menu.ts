@@ -1,4 +1,4 @@
-export const menu: MenuType = [
+export const menu_en: MenuType = [
   {
     id: 'womens',
     label: 'Womens',
@@ -182,6 +182,196 @@ export const menu: MenuType = [
     ],
   },
 ];
+
+export const menu_ar: MenuType = [
+  {
+    id: 'womens',
+    label: 'نساء',
+    href: '/womens',
+    subMenu: [
+      {
+        id: 'wna',
+        label: 'وصل حديثاً',
+        href: '/womens/new-arrivals',
+        subMenu: [
+          { id: 'wfw', label: 'أحذية', href: '/' },
+          { id: 'wapp', label: 'ملابس', href: '/' },
+          { id: 'wacc', label: 'إكسسوارات', href: '/' },
+        ],
+      },
+      {
+        id: 'wa',
+        label: 'ملابس',
+        href: '/womens/apparel',
+        subMenu: [
+          { id: 'wats', label: 'قمصان', href: '/' },
+          { id: 'watts', label: 'تيشيرتات', href: '/' },
+          { id: 'watsw', label: 'كنزات', href: '/' },
+          { id: 'wath', label: 'هوديز', href: '/' },
+          { id: 'wad', label: 'فساتين', href: '/' },
+          { id: 'was', label: 'تنانير', href: '/' },
+          { id: 'wap', label: 'بنطلونات', href: '/' },
+        ],
+      },
+      {
+        id: 'wf',
+        label: 'أحذية',
+        href: '/womens/footwear',
+        subMenu: [
+          { id: 'wfsn', label: 'سنيكرز', href: '/' },
+          { id: 'wfb', label: 'أحذية بوت', href: '/' },
+          { id: 'wfsa', label: 'صنادل', href: '/' },
+        ],
+      },
+      {
+        id: 'wacc',
+        label: 'إكسسوارات',
+        href: '/womens/accessories',
+        subMenu: [
+          { id: 'wab', label: 'حقائب', href: '/' },
+          { id: 'waj', label: 'مجوهرات', href: '/' },
+          { id: 'wah', label: 'قبعات', href: '/' },
+          { id: 'was', label: 'نظارات شمسية', href: '/' },
+        ],
+      },
+      {
+        id: 'wbr',
+        label: 'ماركات',
+        href: '/womens/brands',
+        subMenu: [
+          { id: 'wmarni', label: 'مارني', href: '/' },
+          { id: 'wacni', label: 'أكني', href: '/' },
+          { id: 'wbottega', label: 'بوتيغا', href: '/' },
+          { id: 'wbalenciaga', label: 'بالنسياغا', href: '/' },
+          { id: 'wgucci', label: 'غوتشي', href: '/' },
+          { id: 'wprada', label: 'برادا', href: '/' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'mens',
+    label: 'رجال',
+    href: '/mens',
+    subMenu: [
+      {
+        id: 'm',
+        label: 'وصل حديثاً',
+        href: '/mens/new-arrivals',
+        subMenu: [
+          { id: 'mfw', label: 'أحذية', href: '/' },
+          { id: 'mapp', label: 'ملابس', href: '/' },
+          { id: 'macc', label: 'إكسسوارات', href: '/' },
+        ],
+      },
+      {
+        id: 'mapp',
+        label: 'ملابس',
+        href: '/mens/apparel',
+        subMenu: [
+          { id: 'mats', label: 'قمصان', href: '/' },
+          { id: 'matts', label: 'تيشيرتات', href: '/' },
+          { id: 'matsw', label: 'كنزات', href: '/' },
+          { id: 'math', label: 'هوديز', href: '/' },
+          { id: 'maj', label: 'جاكيتات', href: '/' },
+          { id: 'map', label: 'بنطلونات', href: '/' },
+          { id: 'mas', label: 'شورتات', href: '/' },
+        ],
+      },
+      {
+        id: 'mfw',
+        label: 'أحذية',
+        href: '/mens/footwear',
+        subMenu: [
+          { id: 'mfsn', label: 'سنيكرز', href: '/' },
+          { id: 'mfb', label: 'أحذية بوت', href: '/' },
+          { id: 'mfsan', label: 'صنادل', href: '/' },
+        ],
+      },
+      {
+        id: 'macc',
+        label: 'إكسسوارات',
+        href: '/mens/accessories',
+        subMenu: [
+          { id: 'maccb', label: 'حقائب', href: '/' },
+          { id: 'maccj', label: 'مجوهرات', href: '/' },
+          { id: 'macch', label: 'قبعات', href: '/' },
+          { id: 'maccs', label: 'نظارات شمسية', href: '/' },
+        ],
+      },
+      {
+        id: 'mbr',
+        label: 'ماركات',
+        href: '/mens/brands',
+        subMenu: [
+          { id: 'mmarni', label: 'مارني', href: '/' },
+          { id: 'macni', label: 'أكني', href: '/' },
+          { id: 'mbottega', label: 'بوتيغا', href: '/' },
+          { id: 'mbalenciaga', label: 'بالنسياغا', href: '/' },
+          { id: 'mgucci', label: 'غوتشي', href: '/' },
+          { id: 'mprada', label: 'برادا', href: '/' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'homeware',
+    label: 'المنزل',
+    href: '/homeware',
+    subMenu: [
+      {
+        id: 'hna',
+        label: 'وصل حديثاً',
+        href: '/homeware/new-arrivals',
+        subMenu: [
+          { id: 'hf', label: 'أثاث', href: '/' },
+          { id: 'hd', label: 'ديكور', href: '/' },
+          { id: 'hb', label: 'مفروشات', href: '/' },
+        ],
+      },
+      {
+        id: 'hfm',
+        label: 'أثاث',
+        href: '/homeware/furniture',
+        subMenu: [
+          { id: 'hfms', label: 'كنب', href: '/' },
+          { id: 'hfmc', label: 'كراسي', href: '/' },
+          { id: 'hfmt', label: 'طاولات', href: '/' },
+          { id: 'hfmb', label: 'أسرة', href: '/' },
+        ],
+      },
+      {
+        id: 'decor',
+        label: 'ديكور',
+        href: '/homeware/decor',
+        subMenu: [
+          { id: 'decorr', label: 'سجاد', href: '/' },
+          { id: 'decorel', label: 'إضاءة', href: '/' },
+          { id: 'decorewa', label: 'لوحات جدارية', href: '/' },
+          { id: 'decorm', label: 'مرايا', href: '/' },
+        ],
+      },
+      {
+        id: 'hwbr',
+        label: 'ماركات',
+        href: '/homeware/brands',
+        subMenu: [
+          { id: 'hwbrmt', label: 'ميديكوم توي', href: '/' },
+          { id: 'hwbass', label: 'أسولين', href: '/' },
+          { id: 'hwbsel', label: 'سيليتي', href: '/' },
+          { id: 'hwbver', label: 'فيرساتشي', href: '/' },
+          { id: 'hwbdng', label: 'دولتشي آند غابانا', href: '/' },
+          { id: 'hwbtrud', label: 'ترودون', href: '/' },
+        ],
+      },
+    ],
+  },
+];
+
+export const menu = {
+  en: menu_en,
+  ar: menu_ar,
+};
 
 export type MenuItemType = {
   id: string;

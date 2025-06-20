@@ -1,13 +1,16 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { type Products } from '../../data/products';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
-import ProductCard from '../ProductCard';
+import ProductCard from '../ui/ProductCard';
+import { useLang } from '../providers/LangProvider';
 
 export default function Carousel({ title, products }: { title: string; products: Products }) {
+  const { lang } = useLang();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
     loop: true,
+    direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
 
   const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
@@ -23,7 +26,12 @@ export default function Carousel({ title, products }: { title: string; products:
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom">
             {products.map((product) => (
-              <Card key={product.id} product={product} />
+              <div
+                key={product.id}
+                className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] 2xl:flex-[0_0_25%] group "
+              >
+                <ProductCard {...product} />
+              </div>
             ))}
           </div>
         </div>
@@ -56,18 +64,11 @@ function SectionHeader({
       </div>
       <a
         href="#"
-        className="uppercase px-4 items-center flex gap-1 text-sm lg:text-base lg:gap-2 md:ml-auto xl:col-start-2 xl:row-start-1 2xl:col-start-3"
+        className="uppercase px-4 items-center flex gap-1 text-sm lg:text-base lg:gap-2 md:ltr:ml-auto md:rtl:mr-auto xl:col-start-2 xl:row-start-1 2xl:col-start-3"
       >
         <div className="font-display text-2xl lg:text-3xl w-5 lflex justify-center">+</div>
         <div>SHOP ALL</div>
       </a>
     </header>
-  );
-}
-function Card({ product }: { product: Products[number] }) {
-  return (
-    <div className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] 2xl:flex-[0_0_25%] group ">
-      <ProductCard {...product} />
-    </div>
   );
 }

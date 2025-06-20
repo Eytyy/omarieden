@@ -1,6 +1,6 @@
 import { FaBagShopping, FaHeart, FaUser } from 'react-icons/fa6';
 import MenuBlock from './MenuBlock';
-import ThemeSwitcher from '../ThemeSwitcher';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
 
 const UserNav = () => {
   return (

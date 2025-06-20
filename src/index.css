@@ -14,9 +14,25 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Lenos Light';
+  src: url('/fonts/Lenos-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lenos SemiBold';
+  src: url('/fonts/Lenos-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
 @theme {
   --font-sans: 'Basteleur', sans-serif;
   --font-display: 'Basteleur Bold', sans-serif;
+  --font-sans-ar: 'Lenos Light', sans-serif;
+  --font-display-ar: 'Lenos SemiBold', sans-serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

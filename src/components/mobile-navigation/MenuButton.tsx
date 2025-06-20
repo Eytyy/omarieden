@@ -26,7 +26,9 @@ const MenuButton = ({
         onClick={handleClick}
       >
         <div>{item.label}</div>
-        <div className="font-display text-3xl w-5 flex justify-center">{active ? '-' : '+'}</div>
+        <div className="ltr:font-display rtl:font-display-ar text-3xl w-5 flex justify-center">
+          {active ? '-' : '+'}
+        </div>
       </a>
       {active && item.subMenu ? (
         <SubNav

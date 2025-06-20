@@ -14,7 +14,10 @@ const MenuBlock = <C extends React.ElementType = 'div'>({
   const Component = as || 'div';
   return (
     <Component
-      className={cn('flex flex-col items-center justify-center p-4 border-r', className)}
+      className={cn(
+        'flex flex-col items-center justify-center p-4 rtl:border-l ltr:border-r',
+        className
+      )}
       {...props}
     >
       {children}
