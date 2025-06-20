@@ -39,7 +39,7 @@ export default function MobileNav() {
 
   return (
     <motion.div
-      className="mobile-nav sticky top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black"
+      className="mobile-nav sticky top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-screen overflow-auto"
       initial={{ y: '0%' }}
       animate={{ y: isVisible ? '0%' : '-100%' }}
       transition={{ duration: 0.5, ease: easeInOut }}
