@@ -99,6 +99,7 @@ const Video = ({ src, poster }: { src: string; poster?: string }) => {
       poster={poster}
       muted
       loop
+      playsInline
       className="w-full h-full object-center object-cover absolute top-0 left-0"
     />
   );
