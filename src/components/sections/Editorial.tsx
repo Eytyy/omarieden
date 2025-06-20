@@ -45,7 +45,7 @@ export default function Editorial() {
     },
   });
   return (
-    <section className="grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white">
+    <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white">
       <Edit />
       <div className="2xl:col-span-2 overflow-hidden" ref={emblaRef}>
         <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
@@ -64,7 +64,7 @@ export default function Editorial() {
 
 function Edit() {
   return (
-    <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black  pt-[172px]">
+    <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-[66.66vh] lg:h-auto">
       <div className="px-8 lg:px-16 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
         <Image id="editorial/editorial-outfit_zcjqge" />
       </div>
@@ -86,7 +86,7 @@ function Card({ product, firstRow }: { product: (typeof products)[0]; firstRow: 
   return (
     <div
       className={cn(
-        'grid grid-rows-[3fr_1fr] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative lg:h-[50vh] flex-[0_0_50%] md:flex-[0_0_50%] 2xl:flex[0_0_100%] md:h-[50vh]',
+        'grid grid-rows-[3fr_1fr] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
         firstRow ? 'lg:border-b 2xl:border-b' : 'lg:border-b 2xl:border-b-0'
       )}
     >

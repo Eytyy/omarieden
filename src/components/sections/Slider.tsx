@@ -37,7 +37,7 @@ export default function Slider() {
   const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
+    <div className="aspect-square lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
       <div className="embla h-full relative">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom h-full">
@@ -99,7 +99,7 @@ const Video = ({ src, poster }: { src: string; poster?: string }) => {
       poster={poster}
       muted
       loop
-      className="w-full h-auto object-cover absolute top-0 left-0"
+      className="w-full h-full object-center object-cover absolute top-0 left-0"
     />
   );
 };
