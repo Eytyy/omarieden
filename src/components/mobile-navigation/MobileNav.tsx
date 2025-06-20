@@ -39,10 +39,11 @@ export default function MobileNav() {
 
   return (
     <motion.div
-      className="mobile-nav sticky top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-screen overflow-auto"
+      className="mobile-nav sticky top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-screen overflow-auto overscroll-y-contain"
       initial={{ y: '0%' }}
       animate={{ y: isVisible ? '0%' : '-100%' }}
       transition={{ duration: 0.5, ease: easeInOut }}
+      data-lenis-prevent
     >
       <nav className="grid grid-cols-6 w-full">
         <MenuBlock as="a" href="/" aria-lable="Home" title="Home" className="col-span-2">
