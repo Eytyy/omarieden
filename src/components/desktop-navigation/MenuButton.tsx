@@ -17,9 +17,7 @@ export default function MenuButton({ item, activeMenu, onClick }: Props) {
   return (
     <li className="relative group flex flex-col">
       <button className="cursor-pointer text-lg flex items-center gap-2" onClick={handleClick}>
-        <div className="ltr:font-display rtl:font-display-ar text-3xl w-5 flex justify-center">
-          {active ? '-' : '+'}
-        </div>
+        <div className="text-3xl w-5 flex justify-center font-display">{active ? '-' : '+'}</div>
         <div className="uppercase">{item.label}</div>
       </button>
     </li>

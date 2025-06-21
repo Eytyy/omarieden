@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { MenuType } from '../../data/main-menu';
 import MenuItem from './MenuItem';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 const MainNav = ({
   menu: bilingualMenu,

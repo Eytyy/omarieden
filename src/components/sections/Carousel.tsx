@@ -2,7 +2,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { type Products } from '../../data/products';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import ProductCard from '../ui/ProductCard';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 export default function Carousel({ title, products }: { title: string; products: Products }) {
   const { lang } = useLang();

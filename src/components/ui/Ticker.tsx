@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Marquee } from './Marquee';
 import OmarIconApath from '../icons/OmarIconApath';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 export default function Ticker() {
   const { lang } = useLang();

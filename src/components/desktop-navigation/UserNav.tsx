@@ -1,6 +1,6 @@
 import { FaBagShopping, FaHeart, FaUser } from 'react-icons/fa6';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 import { cn } from '../../lib/utils';
 
 export default function UserNav() {

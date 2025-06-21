@@ -4,7 +4,7 @@ import { menu as bilingualMenu } from '../../data/main-menu';
 import { SubNav } from './SubNav';
 import MenuItem from './MenuItem';
 import HomeIcon from '../ui/HomeIcon';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 export default function MainNav() {
   const { lang } = useLang();

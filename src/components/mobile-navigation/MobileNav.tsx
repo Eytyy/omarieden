@@ -6,7 +6,7 @@ import { menu } from '../../data/main-menu';
 import MainNav from './MainNav';
 import UserNav from './UserNav';
 import HomeIcon from '../ui/HomeIcon';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 import { cn } from '../../lib/utils';
 
 export default function MobileNav() {

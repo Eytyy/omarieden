@@ -2,7 +2,7 @@ import { useInView } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import React from 'react';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 const slides_en = [
   {
@@ -100,7 +100,9 @@ function Slide({ slide }: { slide: (typeof slides)[number]; index: number }) {
       </div>
 
       <div className="absolute bottom-0 rtl:right-0 ltr:left-0 p-4 lg:p-8 w-3/4  text-white ">
-        <h2 className="text-2xl leading-[1.1] lg:text-4xl">{slide.title}</h2>
+        <h2 className="text-2xl leading-[1.1] lg:text-3xl rtl:font-display-ar ltr:font-display">
+          {slide.title}
+        </h2>
         <p className="mt-4 max-w-[60ch] text-sm lg:text-base">{slide.description}</p>
       </div>
     </div>

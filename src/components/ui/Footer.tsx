@@ -1,4 +1,4 @@
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 import FooterLogo from './FooterLogo';
 
 const footer_nav_en = [

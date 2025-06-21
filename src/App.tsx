@@ -3,7 +3,7 @@ import { ThemeProvider } from './components/providers/Theme';
 import Carousel from './components/sections/Carousel';
 import Editorial from './components/sections/Editorial';
 import Highlights from './components/sections/Highlights';
-import Collections from './components/sections/Collections';
+import FeaturedCollections from './components/sections/FeaturedCollections';
 import Slider from './components/sections/Slider';
 import { products } from './data/products';
 import GridLinesBackground from './components/ui/GridLinesBackground';
@@ -26,7 +26,7 @@ function App() {
                 <Carousel title="Women New Arrivals" products={products.wommen} />
                 <Carousel title="Men New Arrivals" products={products.men} />
                 <Slider />
-                <Collections />
+                <FeaturedCollections />
                 <Highlights />
                 <Editorial />
               </div>

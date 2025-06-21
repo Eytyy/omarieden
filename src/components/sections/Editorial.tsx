@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 const products = [
   {
@@ -75,7 +75,7 @@ function Edit({ lang }: { lang: 'en' | 'ar' }) {
         <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
           {lang == 'en' ? 'Editorial' : 'المجلة التحريرية'}
         </a>
-        <h2 className="text-2xl leading-[1.1] lg:text-4xl">
+        <h2 className="text-2xl leading-[1.1] lg:text-3xl ltr:font-display rtl:font-display-ar">
           {lang == 'en' ? 'FOCUS ON: ACTIVE' : 'التركيز على: النشاط'}
         </h2>
         <a href="#" className="uppercase h-[36px] items-center flex gap-2 text-sm">

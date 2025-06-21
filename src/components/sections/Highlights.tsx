@@ -1,6 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from '../ui/Image';
-import { useLang } from '../providers/LangProvider';
+import { useLang } from '../providers/useLang';
 
 const items = [
   {
@@ -31,10 +31,10 @@ export default function Highlights() {
     direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
   return (
-    <section className="grid md:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black md:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] lg:pt-20">
-      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l">
+    <section className="grid md:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black md:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh]">
+      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l ">
         <div>
-          <h2 className="text-2xl leading-[1.1] lg:text-3xl uppercase">
+          <h2 className="text-2xl leading-[1.1] lg:text-3xl  uppercase">
             {lang == 'en' ? 'Brands Highlight of the Month' : 'أبرز العلامات التجارية لهذا الشهر'}
           </h2>
           <p className="leading-[1.3] text-sm lg:base">
@@ -45,7 +45,7 @@ export default function Highlights() {
         </div>
       </header>
       <div
-        className="md:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full"
+        className="md:col-span-2 2xl:col-span-3 embla__viewport overflow-hidden h-full lg:pt-10"
         ref={emblaRef}
       >
         <div className="flex touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-3 h-full">
