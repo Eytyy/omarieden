@@ -2,38 +2,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
 import { useLang } from '../providers/useLang';
-import SliderButtons from '../ui/SliderButtons';
-
-const products = [
-  {
-    id: 1,
-    name: 'Ultra jacket in technical shell',
-    designer: 'Loewe x On',
-    price: 'SAR 850.00',
-    image: 'editorial/editorial-1_aihupa',
-  },
-  {
-    id: 2,
-    name: 'Soft bra in technical jersey',
-    designer: 'Loewe x On',
-    price: 'SAR 1,700.00',
-    image: 'editorial/editorial-2_lomfwi',
-  },
-  {
-    id: 3,
-    name: 'Active tights in technical jersey',
-    designer: 'Loewe x On',
-    price: 'SAR 2,500.00',
-    image: 'editorial/editorial-3_kjdmzv',
-  },
-  {
-    id: 4,
-    name: 'Cloudventure 2.0 sneaker',
-    designer: 'Loewe x On',
-    price: 'SAR 1,200.00',
-    image: 'editorial/editorial-4_c7ox7x',
-  },
-];
+import { HiArrowLongDown, HiArrowLongLeft, HiArrowLongRight, HiArrowLongUp } from 'react-icons/hi2';
+import type { EmblaCarouselType } from 'embla-carousel';
+import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
+import { editorial, type EditorialProduct } from '../../data/editorial';
 
 export default function Editorial() {
   const { lang } = useLang();
@@ -52,14 +24,13 @@ export default function Editorial() {
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <Edit lang={lang} />
       <div className="2xl:col-span-2 relative">
-        <SliderButtons
-          className="absolute lg:top-1/2 lg:-translate-y-1/2 top-0 rtl:left-0 ltr:right-0 2xl:hidden z-10"
-          emblaApi={emblaApi}
-        />
+        <GridLine />
+        <SliderButtons emblaApi={emblaApi} />
         <div className="overflow-hidden relative" ref={emblaRef}>
           <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
-            {products.map((product, i) => (
+            {editorial.map((product, i) => (
               <Card
+                lang={lang}
                 key={product.id}
                 product={product}
                 firstRow={i < 2} // true for first two cards
@@ -94,12 +65,26 @@ function Edit({ lang }: { lang: 'en' | 'ar' }) {
   );
 }
 
-function Card({ product, firstRow }: { product: (typeof products)[0]; firstRow: boolean }) {
+function GridLine() {
+  return (
+    <div className="border-b w-full hidden 2xl:hidden absolute top-1/2 left-0 -translate-y-1/2 lg:flex flex-col justify-center items-center" />
+  );
+}
+
+function Card({
+  product,
+  lang,
+  firstRow,
+}: {
+  product: EditorialProduct;
+  firstRow: boolean;
+  lang: 'en' | 'ar';
+}) {
   return (
     <div
       className={cn(
         'grid grid-rows-[3fr_1fr] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
-        firstRow ? 'lg:border-b 2xl:border-b' : 'lg:border-b 2xl:border-b-0'
+        firstRow ? '2xl:border-b' : '2xl:border-b-0'
       )}
     >
       <div className="flex justify-center items-center px-4 lg:px-8 lg:pt-20 h-full relative">
@@ -109,9 +94,33 @@ function Card({ product, firstRow }: { product: (typeof products)[0]; firstRow: 
       </div>
       <div className="flex flex-col gap-1 lg:gap-0 p-4 lg:p-8">
         <p className="text-gray-400 uppercase text-xs lg:text-sm">{product.designer}</p>
-        <h2 className="uppercase text-sm lg:text-base ">{product.name}</h2>
+        <h2 className="uppercase text-sm lg:text-base ">{product.name[lang]}</h2>
         <p className="text-xs lg:text-sm">{product.price}</p>
       </div>
+    </div>
+  );
+}
+
+function SliderButtons({ emblaApi }: { emblaApi: EmblaCarouselType | undefined }) {
+  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+  return (
+    <div className="flex rtl:flex-row-reverse lg:rtl:flex-col lg:flex-col font-display text-2xl absolute lg:top-1/2 lg:-translate-y-1/2 top-0 rtl:left-0 ltr:right-0 2xl:hidden z-10">
+      <button
+        className="cursor-pointer border p-4 border-t-0 rtl:border-l-0 lg:border-t lg:border-b-0 lg:ltr:border-r-0"
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
+        <HiArrowLongLeft className="lg:hidden" />
+        <HiArrowLongUp className="hidden lg:block" />
+      </button>
+      <button
+        className="cursor-pointer p-4 border-b rtl:border-r lg:ltr:border-l"
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
+        <HiArrowLongRight className="lg:hidden" />
+        <HiArrowLongDown className="hidden lg:block" />
+      </button>
     </div>
   );
 }
