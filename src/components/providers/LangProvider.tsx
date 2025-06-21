@@ -12,9 +12,12 @@ interface LangProviderProps {
 }
 
 const LangProvider: React.FC<LangProviderProps> = ({ children }) => {
-  const [lang, setLang] = useState<'en' | 'ar'>('en');
+  const [lang, setLang] = useState<'en' | 'ar'>(
+    (localStorage.getItem('lang') as 'en' | 'ar') || 'en'
+  );
 
   useEffect(() => {
+    localStorage.setItem('lang', lang);
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.documentElement.setAttribute('lang', 'ar');
@@ -27,4 +30,4 @@ const LangProvider: React.FC<LangProviderProps> = ({ children }) => {
   return <LangContext.Provider value={{ lang, setLang }}>{children}</LangContext.Provider>;
 };
 
-export { LangProvider, LangContext };
+export { LangContext, LangProvider };

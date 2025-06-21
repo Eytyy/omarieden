@@ -3,6 +3,7 @@ import { type Products } from '../../data/products';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import ProductCard from '../ui/ProductCard';
 import { useLang } from '../providers/useLang';
+import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
 
 export default function Carousel({ title, products }: { title: string; products: Products }) {
   const { lang } = useLang();
@@ -50,23 +51,31 @@ function SectionHeader({
   onNextButtonClick: () => void;
 }) {
   return (
-    <header className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 text-sm lg:text-lg py-4 pt-8">
-      <div className="uppercase opacity-50 dark:opacity-80 leading-[1.2] flex items-center px-4 xl:col-start-2 xl:row-start-1">
+    <header className="grid grid-cols-4 md:grid-cols-3 2xl:grid-cols-4 text-sm lg:text-lg bg-white dark:bg-black border-b md:bg-transparent md:dark:bg-transparent 2xl:border-b-0">
+      <div className="uppercase col-span-2 md:col-span-1 opacity-50 dark:opacity-80 leading-[1.2] flex items-center px-4 xl:col-start-2 xl:row-start-1 border-r py-4 pt-5 md:border-r-0">
         {title}
       </div>
-      <div className="flex gap-1 font-display text-2xl px-4 justify-end xl:col-start-2 lg:justify-start 2xl:col-start-3 2xl:row-start-1">
-        <button className="cursor-pointer" onClick={onPrevButtonClick} aria-label="Previous Slide">
-          &larr;
+      <div className="flex font-display text-2xl xl:col-start-2 2xl:rtl:justify-end 2xl:col-start-3 2xl:row-start-1 2xl:gap-2 2xl:px-4 rtl:flex-row-reverse">
+        <button
+          className="cursor-pointer p-4 border-r 2xl:p-0 2xl:border-r-0 w-full 2xl:w-auto flex items-center justify-center"
+          onClick={onPrevButtonClick}
+          aria-label="Previous Slide"
+        >
+          <HiArrowLongLeft />
         </button>
-        <button className="cursor-pointer" onClick={onNextButtonClick} aria-label="Next Slide">
-          &rarr;
+        <button
+          className="cursor-pointer p-4 ltr:border-r 2xl:p-0 2xl:ltr:border-r-0 w-full 2xl:w-auto flex items-center justify-center"
+          onClick={onNextButtonClick}
+          aria-label="Next Slide"
+        >
+          <HiArrowLongRight />
         </button>
       </div>
       <a
         href="#"
-        className="uppercase px-4 items-center flex gap-1 text-sm lg:text-base lg:gap-2 md:ltr:ml-auto md:rtl:mr-auto xl:col-start-2 xl:row-start-1 2xl:col-start-3"
+        className="px-4 uppercase items-center flex  text-sm lg:text-base md:gap-2 md:ltr:ml-auto md:rtl:mr-auto xl:col-start-2 xl:row-start-1 2xl:col-start-3"
       >
-        <div className="font-display text-2xl lg:text-3xl w-5 lflex justify-center">+</div>
+        <div className="hidden font-display text-3xl md:flex justify-center">+</div>
         <div>SHOP ALL</div>
       </a>
     </header>

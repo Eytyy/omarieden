@@ -25,6 +25,8 @@ export const usePrevNextButtons = (
   }, [emblaApi]);
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    if (!emblaApi) return;
+
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
   }, []);
@@ -34,6 +36,11 @@ export const usePrevNextButtons = (
 
     onSelect(emblaApi);
     emblaApi.on('reInit', onSelect).on('select', onSelect);
+
+    // clean up listeners on unmount or emblaApi change
+    return () => {
+      emblaApi.off('reInit', onSelect).off('select', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   return {

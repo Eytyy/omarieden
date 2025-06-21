@@ -1,7 +1,11 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from '../ui/Image';
 import { useLang } from '../providers/useLang';
-import SliderButtons from '../ui/SliderButtons';
+import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
+import type { EmblaCarouselType } from 'embla-carousel';
+import { cn } from '../../lib/utils';
+import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
+import React from 'react';
 
 const items = [
   {
@@ -31,13 +35,10 @@ export default function Highlights() {
     breakpoints: { '(min-width: 1536px)': { active: false } },
     direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
+
   return (
     <section className="grid md:grid-cols-3 2xl:grid-cols-4 border-b dark:border-b-white bg-white dark:bg-black md:bg-transparent lg:dark:bg-transparent lg:min-h-[75vh] relative">
-      <SliderButtons
-        className="absolute bottom-0 rtl:left-0 ltr:right-0 2xl:hidden z-10"
-        emblaApi={emblaApi}
-      />
-
+      {emblaApi ? <SliderButtons emblaApi={emblaApi} /> : null}
       <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l 2xl:rtl:border-l-0 2xl:ltr:border-r-0 2xl:bg-transparent 2xl:dark:bg-transparent">
         <div>
           <h2 className="text-2xl leading-[1.1] lg:text-4xl  uppercase">
@@ -89,6 +90,34 @@ function Card({
       <div className="p-4 lg:p-8">
         <p className="text-sm lg:text-base text-gray-400 uppercase">{item.title}</p>
       </div>
+    </div>
+  );
+}
+
+function SliderButtons({ emblaApi }: { emblaApi: EmblaCarouselType | undefined }) {
+  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+  console.log(emblaApi);
+  return (
+    <div
+      className={cn(
+        'absolute bottom-0 rtl:left-0 ltr:right-0 2xl:hidden z-10 flex font-display text-2xl',
+        'flex-col-reverse'
+      )}
+    >
+      <button
+        className={cn('cursor-pointer', 'border  p-4  border-b-0 border-r-0')}
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
+        <HiArrowLongLeft />
+      </button>
+      <button
+        className={cn('cursor-pointer', 'border  p-4  border-b-0 border-r-0')}
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
+        <HiArrowLongRight />
+      </button>
     </div>
   );
 }
