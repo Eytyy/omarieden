@@ -29,7 +29,7 @@ export default function Carousel({ title, products }: { title: string; products:
             {products.map((product) => (
               <div
                 key={product.id}
-                className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] 2xl:flex-[0_0_25%] group "
+                className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] 2xl:flex-[0_0_25%] group"
               >
                 <ProductCard {...product} />
               </div>

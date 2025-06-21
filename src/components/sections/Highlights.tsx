@@ -5,7 +5,6 @@ import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { cn } from '../../lib/utils';
 import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
-import React from 'react';
 
 const items = [
   {
