@@ -2,6 +2,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
 import { useLang } from '../providers/useLang';
+import SliderButtons from '../ui/SliderButtons';
 
 const products = [
   {
@@ -36,7 +37,7 @@ const products = [
 
 export default function Editorial() {
   const { lang } = useLang();
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
     loop: true,
@@ -48,17 +49,23 @@ export default function Editorial() {
     },
   });
   return (
-    <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white">
+    <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <Edit lang={lang} />
-      <div className="2xl:col-span-2 overflow-hidden" ref={emblaRef}>
-        <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
-          {products.map((product, i) => (
-            <Card
-              key={product.id}
-              product={product}
-              firstRow={i < 2} // true for first two cards
-            />
-          ))}
+      <div className="2xl:col-span-2 relative">
+        <SliderButtons
+          className="absolute lg:top-1/2 lg:-translate-y-1/2 top-0 rtl:left-0 ltr:right-0 2xl:hidden z-10"
+          emblaApi={emblaApi}
+        />
+        <div className="overflow-hidden relative" ref={emblaRef}>
+          <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
+            {products.map((product, i) => (
+              <Card
+                key={product.id}
+                product={product}
+                firstRow={i < 2} // true for first two cards
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -75,7 +82,7 @@ function Edit({ lang }: { lang: 'en' | 'ar' }) {
         <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
           {lang == 'en' ? 'Editorial' : 'المجلة التحريرية'}
         </a>
-        <h2 className="text-2xl leading-[1.1] lg:text-3xl ltr:font-display rtl:font-display-ar">
+        <h2 className="text-2xl leading-[1.1] lg:text-4xl">
           {lang == 'en' ? 'FOCUS ON: ACTIVE' : 'التركيز على: النشاط'}
         </h2>
         <a href="#" className="uppercase h-[36px] items-center flex gap-2 text-sm">

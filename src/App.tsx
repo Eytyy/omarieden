@@ -11,6 +11,7 @@ import Header from './components/ui/Header';
 import Hero from './components/ui/Hero';
 import Footer from './components/ui/Footer';
 import { LangProvider } from './components/providers/LangProvider';
+import { slides } from './data/slides';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
               <div className="relative">
                 <Carousel title="Women New Arrivals" products={products.wommen} />
                 <Carousel title="Men New Arrivals" products={products.men} />
-                <Slider />
+                <Slider data={slides} />
                 <FeaturedCollections />
                 <Highlights />
                 <Editorial />
