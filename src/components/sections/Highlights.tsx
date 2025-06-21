@@ -38,7 +38,7 @@ export default function Highlights() {
         emblaApi={emblaApi}
       />
 
-      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l ">
+      <header className="p-4 py-8 lg:p-8 flex flex-col md:justify-end gap-1 md:gap-2 bg-white dark:bg-black md:ltr:border-r md:rtl:border-l 2xl:rtl:border-l-0 2xl:ltr:border-r-0 2xl:bg-transparent 2xl:dark:bg-transparent">
         <div>
           <h2 className="text-2xl leading-[1.1] lg:text-4xl  uppercase">
             {lang == 'en' ? 'Brands Highlight of the Month' : 'أبرز العلامات التجارية لهذا الشهر'}
