@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
   nextBtnDisabled: boolean;
+  selectedIndex: number;
   onPrevButtonClick: () => void;
   onNextButtonClick: () => void;
 };
@@ -13,6 +14,7 @@ export const usePrevNextButtons = (
 ): UsePrevNextButtonsType => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return;
@@ -29,6 +31,7 @@ export const usePrevNextButtons = (
 
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
   }, []);
 
   useEffect(() => {
@@ -46,6 +49,7 @@ export const usePrevNextButtons = (
   return {
     prevBtnDisabled,
     nextBtnDisabled,
+    selectedIndex,
     onPrevButtonClick,
     onNextButtonClick,
   };

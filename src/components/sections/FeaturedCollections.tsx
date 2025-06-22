@@ -1,7 +1,9 @@
-import React from 'react';
 import { collections, type CollectionType } from '../../data/collections';
 import { useApp } from '../providers/useApp';
 import Image from '../ui/Image';
+import useEmblaCarousel from 'embla-carousel-react';
+import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 export default function FeaturedCollections() {
   const { lang } = useApp();
@@ -22,32 +24,34 @@ function FeaturedCollection({
   collection: CollectionType;
   lang: 'en' | 'ar';
 }) {
-  const [activeIdx, setActiveIdx] = React.useState(0);
   const { title, subtitle, pages } = collection;
-
-  const activePage = pages[activeIdx];
-
-  const updateActivePage = () => {
-    setActiveIdx((prevIdx) => (prevIdx + 1) % pages.length);
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    slidesToScroll: 1,
+    align: 'start',
+    loop: true,
+  });
+  const { onPrevButtonClick, onNextButtonClick, selectedIndex } = usePrevNextButtons(emblaApi);
 
   return (
     <div className="grid grid-rows-[1fr_min-content]  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-screen">
-      <div
-        className="cursor-pointer pt-20 px-4 lg:px-8 relative"
-        onClick={updateActivePage}
-        aria-label={lang === 'en' ? 'Click to change collection' : 'انقر لتغيير المجموعة'}
-      >
-        <div className="relative w-full h-full ">
-          <div className="absolute top-0 w-full h-full object-contain [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
-            <Image id={activePage.image} />
+      <div className=" pt-20 px-4 lg:px-8 relative">
+        <div className="relative w-full h-full">
+          <CarouselControls
+            onPrevButtonClick={onPrevButtonClick}
+            onNextButtonClick={onNextButtonClick}
+          />
+          <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
+            <div className="flex touch-pan-y touch-pinch-zoom h-full">
+              {collection.pages.map((page, i) => (
+                <Card image={page.image} key={i} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-2 p-4 lg:p-8 relative">
-        <PageToggler pages={collection.pages} activeIdx={activeIdx} setActiveIdx={setActiveIdx} />
         <header>
-          <a href="#">
+          <a href={pages[selectedIndex].slug}>
             <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
             {subtitle && <p className="text-sm">{subtitle[lang]}</p>}
           </a>
@@ -57,28 +61,39 @@ function FeaturedCollection({
   );
 }
 
-function PageToggler({
-  pages,
-  activeIdx,
-  setActiveIdx,
-}: {
-  pages: { image: string; slug: string }[];
-  activeIdx: number;
-  setActiveIdx: React.Dispatch<React.SetStateAction<number>>;
-}) {
+const Card = ({ image }: { image: string }) => {
   return (
-    <div className="absolute top-4 lg:top-8 -translate-y-full flex gap-2 py-4">
-      {pages.map((_, index) => (
-        <button
-          type="button"
-          aria-label={`Page ${index + 1}`}
-          key={index}
-          className={`bg-black dark:bg-white transition-opacity duration-300 w-3 h-3 rounded-full cursor-pointer ${
-            index === activeIdx ? 'opacity-100' : 'opacity-20'
-          }`}
-          onClick={() => setActiveIdx(index)}
-        ></button>
-      ))}
+    <div className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%]">
+      <div className="absolute top-0 w-full h-full object-contain [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
+        <Image id={image} />
+      </div>
     </div>
   );
-}
+};
+
+const CarouselControls = ({
+  onPrevButtonClick,
+  onNextButtonClick,
+}: {
+  onPrevButtonClick: () => void;
+  onNextButtonClick: () => void;
+}) => {
+  return (
+    <>
+      <button
+        className="cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl "
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
+        <MdKeyboardArrowLeft />
+      </button>
+      <button
+        className="cursor-pointer flex items-center justify-center absolute top-1/2 right-0 z-10 text-4xl"
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
+        <MdKeyboardArrowRight />
+      </button>
+    </>
+  );
+};
