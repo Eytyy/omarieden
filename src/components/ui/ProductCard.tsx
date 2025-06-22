@@ -24,7 +24,6 @@ export default function ProductCard({
           <div
             className="w-full h-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full "
             onMouseEnter={() => setImageSide('back')}
-            onMouseLeave={() => setImageSide('front')}
             onClick={() => setImageSide((prev) => (prev === 'front' ? 'back' : 'front'))}
             aria-label="Product image"
           >
