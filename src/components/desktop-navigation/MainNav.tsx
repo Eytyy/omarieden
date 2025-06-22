@@ -23,7 +23,7 @@ export default function MainNav() {
     <>
       <nav
         className={cn(
-          'hidden xl:block mainNav sticky lg:fixed top-0 rtl:right-0 ltr:left-0 p-4 lg:p-8 z-50 text-white dark:bg-black mix-blend-difference uppercase text-lg',
+          'hidden lg:block mainNav sticky lg:fixed top-0 rtl:right-0 ltr:left-0 p-4 lg:p-8 z-50 text-white dark:bg-black mix-blend-difference uppercase text-lg',
           activeMenu !== null
             ? 'h-full bg-white  dark:bg-black mix-blend-normal text-black md:w-1/3 2xl:w-1/4 lg:rtl:border-l lg:ltr:border-r rtl:border-r-black ltr:border-l-black dark:border-r-white dark:text-white'
             : 'h-auto'
@@ -33,7 +33,7 @@ export default function MainNav() {
           <a href="/" aria-lable="Home" title="Home">
             <HomeIcon invert={activeMenu !== null} />
           </a>
-          <ul>
+          <ul className="flex flex-col gap-2">
             {menu.map((item) => (
               <MenuItem key={item.id} item={item} activeMenu={activeMenu} onClick={onClick} />
             ))}

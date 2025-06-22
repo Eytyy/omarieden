@@ -5,7 +5,7 @@ export default function HomeIcon({ invert }: { invert?: boolean }) {
     <svg
       className={cn(
         'h-26 w-auto',
-        invert ? 'xl:fill-black xl:dark:fill-white' : 'fill-black dark:fill-white xl:fill-white'
+        invert ? 'lg:fill-black lg:dark:fill-white' : 'fill-black dark:fill-white lg:fill-white'
       )}
       viewBox="0 0 705 1000"
       fill="none"

@@ -1,3 +1,4 @@
+import { FaMinus, FaPlus } from 'react-icons/fa6';
 import type { MenuItemType } from '../../data/main-menu';
 import { cn } from '../../lib/utils';
 import SubNav from './SubNav';
@@ -26,8 +27,8 @@ const MenuButton = ({
         onClick={handleClick}
       >
         <div>{item.label}</div>
-        <div className="ltr:font-display rtl:font-display-ar text-3xl w-5 flex justify-center">
-          {active ? '-' : '+'}
+        <div className="ltr:font-display rtl:font-display-ar  flex justify-center">
+          {active ? <FaMinus size={20} /> : <FaPlus size={20} />}
         </div>
       </a>
       {active && item.subMenu ? (

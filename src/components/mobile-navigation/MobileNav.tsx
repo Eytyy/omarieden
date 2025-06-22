@@ -12,7 +12,7 @@ export default function MobileNav() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
 
-      setMobileMenu(scrollTop < window.innerHeight - 132 ? 'full' : 'compact');
+      setMobileMenu(scrollTop < window.innerHeight - 136 ? 'full' : 'compact');
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -24,7 +24,7 @@ export default function MobileNav() {
   return (
     <motion.div
       layout="position"
-      className="mobile-nav fixed top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-dvh overflow-auto overscroll-y-contain"
+      className="mobile-nav fixed top-0 left-0 lg:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-dvh overflow-auto overscroll-y-contain"
     >
       {mobileMenu == 'full' ? <Full /> : <Compact />}
     </motion.div>

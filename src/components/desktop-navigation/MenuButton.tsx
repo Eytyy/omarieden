@@ -1,3 +1,4 @@
+import { FaMinus, FaPlus } from 'react-icons/fa6';
 import type { MenuItemType } from '../../data/main-menu';
 
 type Props = {
@@ -17,7 +18,9 @@ export default function MenuButton({ item, activeMenu, onClick }: Props) {
   return (
     <li className="relative group flex flex-col">
       <button className="cursor-pointer text-lg flex items-center gap-2" onClick={handleClick}>
-        <div className="text-3xl w-5 flex justify-center font-display">{active ? '-' : '+'}</div>
+        <div className="flex justify-center font-display">
+          {active ? <FaMinus size={20} /> : <FaPlus size={20} />}
+        </div>
         <div className="uppercase">{item.label}</div>
       </button>
     </li>

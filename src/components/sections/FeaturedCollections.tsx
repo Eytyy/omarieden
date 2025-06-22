@@ -46,11 +46,12 @@ function FeaturedCollection({
       </div>
       <div className="flex flex-col gap-2 p-4 lg:p-8 relative">
         <PageToggler pages={collection.pages} activeIdx={activeIdx} setActiveIdx={setActiveIdx} />
-        <CardHeader title={title[lang]} subtitle={subtitle[lang]} />
-        <CardCTA
-          title={lang === 'ar' ? 'استكشاف المجموعة' : 'Explore Collection'}
-          slug={activePage.slug}
-        />
+        <header>
+          <a href="#">
+            <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
+            {subtitle && <p className="text-sm">{subtitle[lang]}</p>}
+          </a>
+        </header>
       </div>
     </div>
   );
@@ -79,23 +80,5 @@ function PageToggler({
         ></button>
       ))}
     </div>
-  );
-}
-
-function CardHeader({ title, subtitle }: { title: string; subtitle: string }) {
-  return (
-    <header className="flex flex-col gap-2">
-      <h2 className="text-2xl leading-[1.1] lg:text-4xl">{title}</h2>
-      {subtitle && <p className="text-sm">{subtitle}</p>}
-    </header>
-  );
-}
-
-function CardCTA({ title, slug }: { title: string; slug: string }) {
-  return (
-    <a href={slug} className="uppercase h-[36px] items-center flex gap-2 text-sm">
-      <div className="font-display text-3xl w-5 flex justify-center">+</div>
-      <div>{title}</div>
-    </a>
   );
 }

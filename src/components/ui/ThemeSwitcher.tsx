@@ -36,7 +36,7 @@ export default function ThemeSwitcher() {
           </motion.g>
         </svg>
       ) : (
-        <svg className="w-8 h-auto xl:fill-white" viewBox="0 0 1000 1001">
+        <svg className="w-8 h-auto lg:fill-white" viewBox="0 0 1000 1001">
           <motion.g
             clipPath="url(#clip0_630_1445)"
             style={{ rotate }}
