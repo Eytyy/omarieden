@@ -1,20 +1,8 @@
 import { useState } from 'react';
 import Image from './Image';
+import type { Product } from '../../data/products';
 
-export default function ProductCard({
-  designer,
-  name,
-  price,
-  images,
-}: {
-  designer: string;
-  name: string;
-  price: string;
-  images: {
-    default: string;
-    hover: string;
-  };
-}) {
+export default function ProductCard({ designer, name, price, images, slug }: Product) {
   const [imageSide, setImageSide] = useState<'front' | 'back'>('front');
   const toggleImageSide = () => {
     setImageSide((prev) => (prev === 'front' ? 'back' : 'front'));
@@ -34,9 +22,18 @@ export default function ProductCard({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-1 lg:gap-0 p-4 pb-8 lg:p-8">
-        <p className="text-gray-400 uppercase text-xs lg:text-sm">{designer}</p>
-        <h2 className="uppercase text-sm lg:text-base ">{name}</h2>
+      <div className="flex flex-col gap-1 p-4 pb-8 lg:p-8">
+        <a
+          href={designer.slug}
+          className="text-gray-400 hover:underline uppercase text-xs lg:text-sm"
+        >
+          {designer.name}
+        </a>
+        <a href={slug} className="group">
+          <h2 className="uppercase font-display text-sm lg:text-base group-hover:underline leading-[1.1]">
+            {name}
+          </h2>
+        </a>
         <p className="text-xs lg:text-sm">{price}</p>
       </div>
     </div>
