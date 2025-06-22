@@ -1,6 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from '../ui/Image';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { cn } from '../../lib/utils';
@@ -25,7 +25,7 @@ const items = [
 ];
 
 export default function Highlights() {
-  const { lang } = useLang();
+  const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',

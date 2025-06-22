@@ -1,12 +1,12 @@
 import React from 'react';
 import { useInView } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import SliderButtons from '../ui/SliderButtons';
 import type { SlideType } from '../../data/slides';
 
 export default function Slider({ data }: { data: SlideType[] }) {
-  const { lang } = useLang();
+  const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
@@ -15,7 +15,7 @@ export default function Slider({ data }: { data: SlideType[] }) {
   });
 
   return (
-    <div className="aspect-square lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
+    <div className="h-[calc(100dvh-69px)] lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
       <div className="embla h-full relative">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom h-full">

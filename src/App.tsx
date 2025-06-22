@@ -10,18 +10,19 @@ import GridLinesBackground from './components/ui/GridLinesBackground';
 import Header from './components/ui/Header';
 import Hero from './components/ui/Hero';
 import Footer from './components/ui/Footer';
-import { LangProvider } from './components/providers/LangProvider';
+import { AppProvider } from './components/providers/AppProvider';
 import { slides } from './data/slides';
+import MainWrapper from './components/ui/MainWrapper';
 
 function App() {
   return (
-    <LangProvider>
+    <AppProvider>
       <ThemeProvider>
         <Lenis>
           <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white lg:grid lg:grid-cols-[2fr_1fr] ltr:font-sans rtl:font-sans-ar">
             <GridLinesBackground />
             <Header />
-            <div className="col-span-full ">
+            <MainWrapper>
               <Hero />
               <div className="relative">
                 <Carousel title="Women New Arrivals" products={products.wommen} />
@@ -32,11 +33,11 @@ function App() {
                 <Editorial />
               </div>
               <Footer />
-            </div>
+            </MainWrapper>
           </div>
         </Lenis>
       </ThemeProvider>
-    </LangProvider>
+    </AppProvider>
   );
 }
 

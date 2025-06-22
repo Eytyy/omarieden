@@ -4,10 +4,10 @@ import { menu as bilingualMenu } from '../../data/main-menu';
 import { SubNav } from './SubNav';
 import MenuItem from './MenuItem';
 import HomeIcon from '../ui/HomeIcon';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 
 export default function MainNav() {
-  const { lang } = useLang();
+  const { lang } = useApp();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const onClick = React.useCallback((id: string) => {

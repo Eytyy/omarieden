@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { Marquee } from './Marquee';
 import OmarIconApath from '../icons/OmarIconApath';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 
 export default function Ticker() {
-  const { lang } = useLang();
+  const { lang } = useApp();
   return (
     <div className="hero--ticker pb-4 lg:pb-8 w-full overflow-hidden">
       <Marquee speed={100} lang={lang}>

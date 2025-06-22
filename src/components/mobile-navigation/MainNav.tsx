@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { MenuType } from '../../data/main-menu';
 import MenuItem from './MenuItem';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 
 const MainNav = ({
   menu: bilingualMenu,
@@ -12,7 +12,7 @@ const MainNav = ({
   };
 }) => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const { lang } = useLang();
+  const { lang } = useApp();
   const menu = lang === 'ar' ? bilingualMenu.ar : bilingualMenu.en;
 
   const onClickCb = React.useCallback((id: string) => {

@@ -15,7 +15,7 @@ const UserNav = () => {
       <MenuBlock as="a" href="/">
         <FaUser size={24} />
       </MenuBlock>
-      <MenuBlock className="border-r-0">
+      <MenuBlock className="ltr:border-r-0 rtl:border-l-0">
         <ThemeSwitcher />
       </MenuBlock>
     </div>

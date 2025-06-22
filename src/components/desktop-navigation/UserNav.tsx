@@ -1,10 +1,10 @@
 import { FaBagShopping, FaHeart, FaUser } from 'react-icons/fa6';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import { cn } from '../../lib/utils';
 
 export default function UserNav() {
-  const { lang, setLang } = useLang();
+  const { lang, setLang } = useApp();
 
   return (
     <nav className="hidden userNav xl:flex gap-10 fixed rtl:left-0 ltr:right-0 top-0 p-8 z-[44] text-white dark:text-white mix-blend-difference dark:mix-blend-normal uppercase text-lg items-center w-auto ">

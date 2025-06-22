@@ -1,99 +1,32 @@
-import React, { useState } from 'react';
-import { easeInOut, motion } from 'framer-motion';
-
-import MenuBlock from './MenuBlock';
-import { menu } from '../../data/main-menu';
-import MainNav from './MainNav';
-import UserNav from './UserNav';
-import HomeIcon from '../ui/HomeIcon';
-import { useLang } from '../providers/useLang';
-import { cn } from '../../lib/utils';
+import React from 'react';
+import Full from './Full';
+import Compact from './Compact';
+import { motion } from 'framer-motion';
+import { useApp } from '../providers/useApp';
 
 export default function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { setLang, lang } = useLang();
+  // set visibility state based on scroll position
+  const { mobileMenu, setMobileMenu } = useApp();
 
-  // hide the menu on scroll, show on scroll up or if near bottom (137px from bottom)
-  const [isVisible, setIsVisible] = useState(true);
   React.useEffect(() => {
-    let lastScrollTop = 0;
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      const isNearBottom = scrollTop + windowHeight >= docHeight - 137;
-      if (isOpen) {
-        return;
-      }
+      const scrollTop = window.scrollY;
 
-      if (isNearBottom) {
-        setIsVisible(true);
-      } else if (scrollTop > lastScrollTop) {
-        setIsVisible(false); // Scrolling down
-      } else {
-        setIsVisible(true); // Scrolling up
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+      setMobileMenu(scrollTop < window.innerHeight - 132 ? 'full' : 'compact');
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isOpen]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [setMobileMenu]);
 
   return (
     <motion.div
-      className="mobile-nav sticky top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-dvh overflow-auto overscroll-y-contain"
-      initial={{ y: '0%' }}
-      animate={{ y: isVisible ? '0%' : '-100%' }}
-      transition={{ duration: 0.5, ease: easeInOut }}
-      data-lenis-prevent
+      layout="position"
+      className="mobile-nav fixed top-0 left-0 xl:hidden lg:text-lg col-span-full uppercase w-full border-b z-[100] bg-white dark:bg-black max-h-dvh overflow-auto overscroll-y-contain"
     >
-      <nav className="grid grid-cols-6 w-full">
-        <MenuBlock as="a" href="/" aria-lable="Home" title="Home" className="col-span-2">
-          <HomeIcon invert={false} />
-        </MenuBlock>
-        <div className="flex flex-col h-full col-span-4">
-          <div className="grid grid-cols-4 border-b">
-            <ToggleBtn onClick={() => setIsOpen(!isOpen)} isOpen={isOpen} />
-            <MenuBlock>
-              <button
-                className={cn('cursor-pointer', lang == 'en' ? 'font-display' : '')}
-                onClick={() => setLang('en')}
-                aria-label="Change Language to English"
-                title="Change Language to English"
-              >
-                <span className="font-display">EN</span>
-              </button>
-            </MenuBlock>
-            <MenuBlock className="border-r-0">
-              <button
-                className={cn('cursor-pointer', lang == 'ar' ? 'font-display' : '')}
-                onClick={() => setLang('ar')}
-                aria-label="Change Language to Arabic"
-                title="Change Language to Arabic"
-              >
-                <span>AR</span>
-              </button>
-            </MenuBlock>
-          </div>
-          <UserNav />
-        </div>
-      </nav>
-      {isOpen ? <MainNav menu={menu} /> : null}
+      {mobileMenu == 'full' ? <Full /> : <Compact />}
     </motion.div>
   );
 }
-
-const ToggleBtn = ({ onClick, isOpen }: { isOpen: boolean; onClick: () => void }) => (
-  <MenuBlock
-    className="col-span-2 items-start flex w-full uppercase cursor-pointer"
-    as="button"
-    aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-    title="Menu"
-    onClick={onClick}
-  >
-    <div className="flex items-center gap-2 ">
-      <span className="font-display text-3xl w-5 ">{isOpen ? '-' : '+'}</span>
-      <span>Menu</span>
-    </div>
-  </MenuBlock>
-);

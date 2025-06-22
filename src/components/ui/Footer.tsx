@@ -1,4 +1,4 @@
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import FooterLogo from './FooterLogo';
 
 const footer_nav_en = [
@@ -78,7 +78,7 @@ const footer_nav_ar = [
 ];
 
 export default function Footer() {
-  const { lang } = useLang();
+  const { lang } = useApp();
   const menus = lang === 'en' ? footer_nav_en : footer_nav_ar;
   return (
     <div className="bg-white relative lg:min-h-screen flex flex-col justify-end dark:bg-black">

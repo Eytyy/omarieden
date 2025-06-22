@@ -1,14 +1,14 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import { HiArrowLongDown, HiArrowLongLeft, HiArrowLongRight, HiArrowLongUp } from 'react-icons/hi2';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import { editorial, type EditorialProduct } from '../../data/editorial';
 
 export default function Editorial() {
-  const { lang } = useLang();
+  const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',

@@ -1,10 +1,10 @@
 import React from 'react';
 import { collections, type CollectionType } from '../../data/collections';
-import { useLang } from '../providers/useLang';
+import { useApp } from '../providers/useApp';
 import Image from '../ui/Image';
 
 export default function FeaturedCollections() {
-  const { lang } = useLang();
+  const { lang } = useApp();
 
   return (
     <section className="grid lg:grid-cols-2 lg:border-b border-b-black dark:border-b-white ">
