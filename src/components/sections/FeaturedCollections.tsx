@@ -33,7 +33,7 @@ function FeaturedCollection({
   const { onPrevButtonClick, onNextButtonClick, selectedIndex } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="grid grid-rows-[1fr_min-content]  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black h-screen">
+    <div className="grid grid-rows-[1fr_min-content]  bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black lg:h-screen h-[calc(100vh-57px)]">
       <div className=" pt-20 px-4 lg:px-8 relative">
         <div className="relative w-full h-full">
           <CarouselControls
@@ -49,9 +49,9 @@ function FeaturedCollection({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 p-4 lg:p-8 relative">
+      <div className="flex flex-col gap-2 p-4 pb-8 lg:p-8 relative">
         <header>
-          <a href={pages[selectedIndex].slug}>
+          <a href={pages[selectedIndex].slug} className="group">
             <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
             {subtitle && <p className="text-sm">{subtitle[lang]}</p>}
           </a>
