@@ -33,7 +33,7 @@ export default function Carousel({ title, products }: { title: string; products:
       >
         <MdKeyboardArrowRight />
       </button>
-      <div className="embla h-full relative pt-20">
+      <div className="embla h-full relative pt-10">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom">
             {products.map((product) => (
@@ -53,7 +53,7 @@ export default function Carousel({ title, products }: { title: string; products:
 
 function SectionHeader({ title }: { title: string }) {
   return (
-    <header className="w-1/2 lg:w-auto p-4 pt-8 lg:grid lg:grid-cols-3 lg:px-0 2xl:grid-cols-4">
+    <header className="w-1/2 lg:w-auto px-4 pt-8 lg:grid lg:grid-cols-3 lg:px-0 2xl:grid-cols-4">
       <div className="text-lg uppercase opacity-50 dark:opacity-80 lg:col-start-2 xl:px-4 lg:px-8">
         {title}
       </div>

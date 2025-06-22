@@ -2,10 +2,9 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
 import { useApp } from '../providers/useApp';
-import { HiArrowLongDown, HiArrowLongLeft, HiArrowLongRight, HiArrowLongUp } from 'react-icons/hi2';
-import type { EmblaCarouselType } from 'embla-carousel';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import { editorial, type EditorialProduct } from '../../data/editorial';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 export default function Editorial() {
   const { lang } = useApp();
@@ -20,12 +19,27 @@ export default function Editorial() {
       '(min-width: 1536px)': { active: false },
     },
   });
+  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <Edit lang={lang} />
       <div className="2xl:col-span-2 relative">
+        <button
+          className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl -translate-y-1/2 lg:right-4 lg:left-auto lg:rotate-90 lg:-translate-y-full"
+          onClick={onPrevButtonClick}
+          aria-label="Previous Slide"
+        >
+          <MdKeyboardArrowLeft />
+        </button>
+        <button
+          className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 z-10 text-4xl -translate-y-1/2 lg:rotate-90 lg:translate-y-0"
+          onClick={onNextButtonClick}
+          aria-label="Next Slide"
+        >
+          <MdKeyboardArrowRight />
+        </button>
         <GridLine />
-        <SliderButtons emblaApi={emblaApi} />
         <div className="overflow-hidden relative" ref={emblaRef}>
           <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
             {editorial.map((product, i) => (
@@ -95,30 +109,6 @@ function Card({
         <h2 className="uppercase text-sm lg:text-base ">{product.name[lang]}</h2>
         <p className="text-xs lg:text-sm">{product.price}</p>
       </div>
-    </div>
-  );
-}
-
-function SliderButtons({ emblaApi }: { emblaApi: EmblaCarouselType | undefined }) {
-  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
-  return (
-    <div className="flex rtl:flex-row-reverse lg:rtl:flex-col lg:flex-col font-display text-2xl absolute lg:top-1/2 lg:-translate-y-1/2 top-0 rtl:left-0 ltr:right-0 2xl:hidden z-10">
-      <button
-        className="cursor-pointer border p-4 border-t-0 rtl:border-l-0 lg:border-t lg:border-b-0 lg:ltr:border-r-0"
-        onClick={onPrevButtonClick}
-        aria-label="Previous Slide"
-      >
-        <HiArrowLongLeft className="lg:hidden" />
-        <HiArrowLongUp className="hidden lg:block" />
-      </button>
-      <button
-        className="cursor-pointer p-4 border-b rtl:border-r lg:ltr:border-l"
-        onClick={onNextButtonClick}
-        aria-label="Next Slide"
-      >
-        <HiArrowLongRight className="lg:hidden" />
-        <HiArrowLongDown className="hidden lg:block" />
-      </button>
     </div>
   );
 }
