@@ -16,6 +16,9 @@ export default function ProductCard({
   };
 }) {
   const [imageSide, setImageSide] = useState<'front' | 'back'>('front');
+  const toggleImageSide = () => {
+    setImageSide((prev) => (prev === 'front' ? 'back' : 'front'));
+  };
 
   return (
     <div>
@@ -23,8 +26,8 @@ export default function ProductCard({
         <div className="w-full h-full justify-center items-center  relative">
           <div
             className="w-full h-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full "
-            onMouseEnter={() => setImageSide('back')}
-            onClick={() => setImageSide((prev) => (prev === 'front' ? 'back' : 'front'))}
+            onMouseEnter={toggleImageSide}
+            onClick={toggleImageSide}
             aria-label="Product image"
           >
             {imageSide === 'front' ? <Image id={images.default} /> : <Image id={images.hover} />}
