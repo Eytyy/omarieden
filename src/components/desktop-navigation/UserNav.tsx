@@ -8,7 +8,7 @@ export default function UserNav() {
 
   return (
     <nav className="hidden userNav lg:flex gap-8 fixed rtl:left-0 ltr:right-0 top-0 p-8 z-[44] text-white dark:text-white mix-blend-difference dark:mix-blend-normal uppercase text-lg items-center w-1/3 2xl:w-1/4">
-      <div className="flex gap-8 items-center w-full justify-between">
+      <div className="flex gap-8 items-center w-full justify-end">
         <a href="/" className="relative">
           <FaBagShopping size={24} />
           <span className="text-xs absolute top-0 right-0 translate-x-full -translate-y-1/2">
@@ -21,8 +21,6 @@ export default function UserNav() {
         <a href="/">
           <FaUser size={24} />
         </a>
-      </div>
-      <div className="flex gap-8 items-center w-full justify-between">
         <div>
           <button
             className={cn('cursor-pointer', lang === 'en' ? 'font-display' : 'font-sans')}
