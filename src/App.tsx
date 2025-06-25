@@ -9,7 +9,7 @@ import { products } from './data/products';
 import GridLinesBackground from './components/ui/GridLinesBackground';
 import Header from './components/ui/Header';
 import Hero from './components/ui/Hero';
-import Footer from './components/ui/Footer';
+import Footer from './components/footer/Footer';
 import { AppProvider } from './components/providers/AppProvider';
 import { slides } from './data/slides';
 import MainWrapper from './components/ui/MainWrapper';
