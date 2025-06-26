@@ -5,53 +5,16 @@ import { useApp } from '../providers/useApp';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import { editorial, type EditorialProduct } from '../../data/editorial';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import EditorialProductCard from '../product/EditorialProductCard';
 
 export default function Editorial() {
   const { lang } = useApp();
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    slidesToScroll: 1,
-    align: 'start',
-    loop: true,
-    active: true,
-    direction: lang === 'ar' ? 'rtl' : 'ltr',
-    breakpoints: {
-      '(min-width: 1024px)': { axis: 'y' },
-      '(min-width: 1536px)': { active: false },
-    },
-  });
-  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
 
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <Edit lang={lang} />
       <div className="2xl:col-span-2 relative">
-        <button
-          className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl -translate-y-1/2 lg:right-4 lg:left-auto lg:rotate-90 lg:-translate-y-full"
-          onClick={onPrevButtonClick}
-          aria-label="Previous Slide"
-        >
-          <MdKeyboardArrowLeft />
-        </button>
-        <button
-          className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 z-10 text-4xl -translate-y-1/2 lg:rotate-90 lg:translate-y-0"
-          onClick={onNextButtonClick}
-          aria-label="Next Slide"
-        >
-          <MdKeyboardArrowRight />
-        </button>
-        <GridLine />
-        <div className="overflow-hidden relative" ref={emblaRef}>
-          <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
-            {editorial.map((product, i) => (
-              <Card
-                lang={lang}
-                key={product.id}
-                product={product}
-                firstRow={i < 2} // true for first two cards
-              />
-            ))}
-          </div>
-        </div>
+        <ProductsCarousel products={editorial} lang={lang} />
       </div>
     </section>
   );
@@ -59,7 +22,7 @@ export default function Editorial() {
 
 function Edit({ lang }: { lang: 'en' | 'ar' }) {
   return (
-    <div className="2xl:col-span-2 flex flex-col justify-end  bg-white border-b lg:border-b-0 lg:rtl:border-l lg:ltr:border-r relative dark:bg-black h-[66.66vh] lg:h-auto">
+    <div className="2xl:col-span-2 flex flex-col justify-end bg-white border-b lg:border-b-0 lg:rtl:border-l lg:ltr:border-r relative dark:bg-black h-[66.66vh] lg:h-auto ">
       <div className="px-4 lg:px-8 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
         <Image id="editorial/editorial-outfit_zcjqge" />
       </div>
@@ -77,38 +40,57 @@ function Edit({ lang }: { lang: 'en' | 'ar' }) {
   );
 }
 
-function GridLine() {
+function ProductsCarousel({ products, lang }: { products: EditorialProduct[]; lang: 'en' | 'ar' }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    slidesToScroll: 1,
+    align: 'start',
+    loop: true,
+    active: true,
+    direction: lang === 'ar' ? 'rtl' : 'ltr',
+    breakpoints: {
+      '(min-width: 1024px)': { axis: 'y' },
+      '(min-width: 1536px)': { active: false },
+    },
+  });
+  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi);
+
   return (
-    <div className="border-b w-full hidden 2xl:hidden absolute top-1/2 left-0 -translate-y-1/2 lg:flex flex-col justify-center items-center" />
+    <>
+      <button
+        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl -translate-y-1/2 lg:right-4 lg:left-auto lg:rotate-90 lg:-translate-y-full"
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
+        <MdKeyboardArrowLeft />
+      </button>
+      <button
+        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 z-10 text-4xl -translate-y-1/2 lg:rotate-90 lg:translate-y-0"
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
+        <MdKeyboardArrowRight />
+      </button>
+      <GridLine />
+      <div className="overflow-hidden relative" ref={emblaRef}>
+        <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
+          {products.map((product, i) => (
+            <div
+              className={cn(
+                'group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
+                i < 2 ? '2xl:border-b' : '2xl:border-b-0'
+              )}
+            >
+              <EditorialProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
-function Card({
-  product,
-  lang,
-  firstRow,
-}: {
-  product: EditorialProduct;
-  firstRow: boolean;
-  lang: 'en' | 'ar';
-}) {
+function GridLine() {
   return (
-    <div
-      className={cn(
-        'grid grid-rows-[3fr_1fr] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
-        firstRow ? '2xl:border-b' : '2xl:border-b-0'
-      )}
-    >
-      <div className="flex justify-center items-center px-4 lg:px-8 lg:pt-20 h-full relative">
-        <div className="w-full h-full  absolute top-0 left-0 [&_img]:object-contain [&_img]:w-full [&_img]:h-full ">
-          <Image id={product.image} />
-        </div>
-      </div>
-      <div className="flex flex-col gap-1 lg:gap-0 p-4 lg:p-8">
-        <p className="text-gray-400 uppercase text-xs lg:text-sm">{product.designer}</p>
-        <h2 className="uppercase text-sm lg:text-base ">{product.name[lang]}</h2>
-        <p className="text-xs lg:text-sm">{product.price}</p>
-      </div>
-    </div>
+    <div className="border-b w-full hidden 2xl:hidden absolute top-1/2 left-0 -translate-y-1/2 lg:flex flex-col justify-center items-center" />
   );
 }

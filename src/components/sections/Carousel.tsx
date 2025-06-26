@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { type Products } from '../../data/products';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
-import ProductCard from '../ui/ProductCard';
+import ProductCard from '../product/ProductCard';
 import { useApp } from '../providers/useApp';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -41,7 +41,7 @@ export default function Carousel({ title, products }: { title: string; products:
                 key={product.id}
                 className="embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] 2xl:flex-[0_0_25%] group"
               >
-                <ProductCard {...product} />
+                <ProductCard product={product} />
               </div>
             ))}
           </div>

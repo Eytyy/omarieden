@@ -4,10 +4,8 @@ const women_new = [
     name: 'Dana Down Jacket in Black',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 1,200.00',
-    images: {
-      default: 'women/jacket_cxivp4',
-      hover: 'women/jacket-model_phu2kg',
-    },
+    mainImage: 'women/jacket_cxivp4',
+    backImage: 'women/jacket-model_phu2kg',
     slug: '/womens/dana-down-jacket',
   },
   {
@@ -15,10 +13,8 @@ const women_new = [
     name: 'Blanca Dress in Milk',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 2,500.00',
-    images: {
-      default: 'women/dress2_lv6e5u',
-      hover: 'women/dress2-model_r2nirh',
-    },
+    mainImage: 'women/dress2_lv6e5u',
+    backImage: 'women/dress2-model_r2nirh',
     slug: '/womens/blanca-dress',
   },
   {
@@ -26,10 +22,8 @@ const women_new = [
     name: 'Lise Linen Dress in Darkest Navy',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 850.00',
-    images: {
-      default: 'women/dress_infz8s',
-      hover: 'women/dress-model_goio6h',
-    },
+    mainImage: 'women/dress_infz8s',
+    backImage: 'women/dress-model_goio6h',
     slug: '/womens/lise-linen-dress',
   },
   {
@@ -37,10 +31,8 @@ const women_new = [
     name: 'Mae Skirt in Cream',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 1,700.00',
-    images: {
-      default: 'women/skirt_u6vsnj',
-      hover: 'women/skirt-model_agtwjp',
-    },
+    mainImage: 'women/skirt_u6vsnj',
+    backImage: 'women/skirt-model_agtwjp',
     slug: '/womens/mae-skirt',
   },
   {
@@ -48,10 +40,8 @@ const women_new = [
     name: 'Acuna Tropical Wool Pant in Darkest Navy',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 950.00',
-    images: {
-      default: 'women/pants_rgijxz',
-      hover: 'women/pants-model_nmjbps',
-    },
+    mainImage: 'women/pants_rgijxz',
+    backImage: 'women/pants-model_nmjbps',
     slug: '/womens/acuna-tropical-wool-pant',
   },
 ];
@@ -62,10 +52,8 @@ const menu_new = [
     name: 'Paolo Denim Pant in Indigo Wash',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 1,200.00',
-    images: {
-      default: 'men/image_5_kqwyxz',
-      hover: 'men/image_4_koshod',
-    },
+    mainImage: 'men/image_5_kqwyxz',
+    backImage: 'men/image_4_koshod',
     slug: '/mens/paolo-denim-pant',
   },
   {
@@ -73,10 +61,8 @@ const menu_new = [
     name: 'Sanko Shirt in Milk',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 2,500.00',
-    images: {
-      default: 'men/shirt_jvkaqu',
-      hover: 'men/shirt-model_wzcewf',
-    },
+    mainImage: 'men/shirt_jvkaqu',
+    backImage: 'men/shirt-model_wzcewf',
     slug: '/mens/sanko-shirt',
   },
   {
@@ -84,10 +70,8 @@ const menu_new = [
     name: 'Loft Down Jacket in Black',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 850.00',
-    images: {
-      default: 'men/jacket_lnjfl8',
-      hover: 'men/jacket-model_io9sxy',
-    },
+    mainImage: 'men/jacket_lnjfl8',
+    backImage: 'men/jacket-model_io9sxy',
     slug: '/mens/loft-down-jacket',
   },
   {
@@ -95,10 +79,8 @@ const menu_new = [
     name: 'Nopi Jacket in Darkest Navy',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 1,700.00',
-    images: {
-      default: 'men/jacket2-model_ckkvn6',
-      hover: 'men/jacket2_hdgwoa',
-    },
+    mainImage: 'men/jacket2-model_ckkvn6',
+    backImage: 'men/jacket2_hdgwoa',
     slug: '/mens/nopi-jacket',
   },
   {
@@ -106,10 +88,8 @@ const menu_new = [
     name: 'Denby Knit in Espresso Brown',
     designer: { name: 'Studio Nicholson', slug: '/designers/studio-nicholson' },
     price: 'SAR 950.00',
-    images: {
-      default: 'men/sweater_jdqivu',
-      hover: 'men/sweater-model_ijugj3',
-    },
+    mainImage: 'men/sweater_jdqivu',
+    backImage: 'men/sweater-model_ijugj3',
     slug: '/mens/denby-knit',
   },
 ];
@@ -124,10 +104,8 @@ export type Product = {
   name: string;
   designer: Designer;
   price: string;
-  images: {
-    default: string;
-    hover: string;
-  };
+  mainImage: string;
+  backImage?: string;
   slug: string;
 };
 
