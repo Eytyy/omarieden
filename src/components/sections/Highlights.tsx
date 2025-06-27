@@ -5,24 +5,8 @@ import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { cn } from '../../lib/utils';
-
-const items = [
-  {
-    id: 1,
-    title: 'Marni',
-    images: { default: 'brands/marni-m_ypj0vx', hover: 'brands/marni-w_ioaw5g' },
-  },
-  {
-    id: 3,
-    title: 'Loewe',
-    images: { default: 'brands/loewe-w_gqerho', hover: 'brands/loewe-m_uim7is' },
-  },
-  {
-    id: 2,
-    title: 'Acne',
-    images: { default: 'brands/acne-m_ecrahp', hover: 'brands/acne-w_djldez' },
-  },
-];
+import highlights, { type HighlightType } from '../../data/highlights';
+import { useState } from 'react';
 
 export default function Highlights() {
   const { lang } = useApp();
@@ -50,11 +34,11 @@ export default function Highlights() {
         </div>
       </header>
       <div className="md:col-span-2 2xl:col-span-3 lg:pt-10 relative">
-        <SliderButtons emblaApi={emblaApi} noOfSlides={items.length} />
+        <SliderButtons emblaApi={emblaApi} noOfSlides={highlights.length} />
         <div className="embla__viewport overflow-hidden h-full " ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-3 h-full">
-            {items.map((item) => (
-              <Card key={item.id} item={item} />
+            {highlights.map((item) => (
+              <Card key={item.id} {...item} />
             ))}
           </div>
         </div>
@@ -63,30 +47,31 @@ export default function Highlights() {
   );
 }
 
-function Card({
-  item,
-}: {
-  item: {
-    id: number;
-    title: string;
-    images: {
-      default: string;
-      hover: string;
-    };
+function Card(item: HighlightType) {
+  const [selectedPage, setSelectedPage] = useState<0 | 1>(0);
+  const togglePage = () => {
+    setSelectedPage((prev) => (prev === 0 ? 1 : 0));
   };
-}) {
+
   return (
-    <div className="grid grid-rows-[1fr_min-content] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]">
-      <div className="group relative w-full aspect-square lg:aspect-auto">
-        <div className="[&_img]:object-contain [&_img]:w-full [&_img]:h-full absolute inset-4 lg:inset-8 group-hover:opacity-0 transition-opacity duration-300">
-          <Image id={item.images.default} />
-        </div>
-        <div className="absolute inset-4 lg:inset-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
-          <Image id={item.images.hover} />
+    <div
+      className="grid grid-rows-[1fr_min-content] group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_50%] 2xl:flex-[0_0_100%]"
+      onMouseEnter={togglePage}
+      onClick={togglePage}
+      aria-label="View Next Featured Highlight Page"
+    >
+      <div className="relative w-full aspect-square lg:aspect-auto">
+        <div className="[&_img]:object-contain [&_img]:w-full [&_img]:h-full absolute inset-4 lg:inset-8">
+          <Image id={item.pages[selectedPage].image} />
         </div>
       </div>
       <div className="p-4 lg:p-8">
-        <p className="text-sm lg:text-base text-gray-400 uppercase">{item.title}</p>
+        <a
+          href={item.pages[selectedPage].slug}
+          className="text-sm lg:text-base uppercase hover:underline"
+        >
+          {item.title}
+        </a>
       </div>
     </div>
   );

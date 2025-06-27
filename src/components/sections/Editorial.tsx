@@ -76,7 +76,7 @@ function ProductsCarousel({ products, lang }: { products: EditorialProduct[]; la
           {products.map((product, i) => (
             <div
               className={cn(
-                'group embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
+                'embla__slide [transform:_translate3d(0,0,0)] min-w-0 relative flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_50%] 2xl:flex[0_0_100%] lg:h-[50vh]',
                 i < 2 ? '2xl:border-b' : '2xl:border-b-0'
               )}
             >
