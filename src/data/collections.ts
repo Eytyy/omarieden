@@ -8,10 +8,9 @@ export const collections = [
       en: 'A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color',
       ar: 'احتفال بأكثر قطع الموسم حيوية، من حقيبة هاموك الأيقونية إلى حقيبة بزل الجديدة بلون محدود الإصدار',
     },
-    pages: [
-      { image: 'collections/marni_gpelj1', slug: '/womens/collections/marni' },
-      { image: 'collections/marni-hover_syuxzh', slug: '/mens/collections/marni' },
-    ],
+    mainImage: 'collections/marni_gpelj1',
+    backImage: 'collections/marni-hover_syuxzh',
+    slug: '/collections/marni',
   },
   {
     title: {
@@ -22,10 +21,9 @@ export const collections = [
       en: 'A celebration of the season’s most vibrant pieces, from the iconic Hammock bag to the new Puzzle bag in a limited-edition color',
       ar: 'احتفال بأكثر قطع الموسم حيوية، من حقيبة هاموك الأيقونية إلى حقيبة بزل الجديدة بلون محدود الإصدار',
     },
-    pages: [
-      { image: 'collections/acni_zw9tza', slug: '/mens/collections/acne' },
-      { image: 'collections/acni-hover_d7izi8', slug: '/womens/collections/acne' },
-    ],
+    mainImage: 'collections/acni_zw9tza',
+    backImage: 'collections/acni-hover_d7izi8',
+    slug: '/collections/acne',
   },
 ];
 
@@ -38,8 +36,7 @@ export type CollectionType = {
     en: string;
     ar: string;
   };
-  pages: {
-    image: string;
-    slug: string;
-  }[];
+  mainImage: string;
+  backImage: string;
+  slug: string;
 };

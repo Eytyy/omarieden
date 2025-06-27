@@ -6,34 +6,59 @@ import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import { editorial, type EditorialProduct } from '../../data/editorial';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import EditorialProductCard from '../product/EditorialProductCard';
+import { useState } from 'react';
 
 export default function Editorial() {
   const { lang } = useApp();
+  const [selectedSection, setSelectedSection] = useState<'men' | 'women'>('women');
+
+  const toggleSection = () => {
+    setSelectedSection((prev) => (prev === 'men' ? 'women' : 'men'));
+  };
 
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
-      <Edit lang={lang} />
+      <Edit
+        lang={lang}
+        toggleSection={toggleSection}
+        title={editorial.title}
+        slug={editorial.slug}
+        mainImage={editorial[selectedSection].mainImage}
+      />
       <div className="2xl:col-span-2 relative">
-        <ProductsCarousel products={editorial} lang={lang} />
+        <ProductsCarousel products={editorial[selectedSection].products} lang={lang} />
       </div>
     </section>
   );
 }
 
-function Edit({ lang }: { lang: 'en' | 'ar' }) {
+function Edit({
+  lang,
+  title,
+  slug,
+  mainImage,
+  toggleSection,
+}: {
+  lang: 'en' | 'ar';
+  toggleSection: () => void;
+  title: { en: string; ar: string };
+  slug: string;
+  mainImage: string;
+}) {
   return (
     <div className="2xl:col-span-2 flex flex-col justify-end bg-white border-b lg:border-b-0 lg:rtl:border-l lg:ltr:border-r relative dark:bg-black h-[66.66vh] lg:h-auto ">
-      <div className="px-4 lg:px-8 absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
-        <Image id="editorial/editorial-outfit_zcjqge" />
+      <div
+        onClick={toggleSection}
+        className="px-4 lg:px-8 cursor-pointer absolute top-0 left-0 h-full w-full [&_img]:object-contain [&_img]:w-full [&_img]:h-full"
+      >
+        <Image id={mainImage} />
       </div>
       <header className="p-4 lg:p-8 relative">
         <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
           {lang == 'en' ? 'Editorial' : 'المجلة التحريرية'}
         </a>
-        <a href="#">
-          <h2 className="text-2xl leading-[1.1] lg:text-4xl">
-            {lang == 'en' ? 'FOCUS ON: ACTIVE' : 'التركيز على: النشاط'}
-          </h2>
+        <a href={slug}>
+          <h2 className="text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
         </a>
       </header>
     </div>

@@ -22,27 +22,27 @@ function FeaturedCollection({
   collection: CollectionType;
   lang: 'en' | 'ar';
 }) {
-  const { title, subtitle, pages } = collection;
-  const [selectedPage, setSelectedPage] = useState<0 | 1>(0);
-  const togglePage = () => {
-    setSelectedPage((prev) => (prev === 0 ? 1 : 0));
+  const { title, subtitle, slug, backImage, mainImage } = collection;
+  const [selectedImage, setSelectedImage] = useState<'mainImage' | 'backImage'>('mainImage');
+  const toggleImage = () => {
+    setSelectedImage((prev) => (prev === 'mainImage' ? 'backImage' : 'mainImage'));
   };
 
   return (
     <div className="grid grid-rows-[1fr_min-content] bg-white border-b lg:border-b-0 lg:border-r relative dark:bg-black lg:h-screen h-[calc(100vh-57px)] pt-10">
       <div
         className="px-4 lg:px-8 relative"
-        onMouseEnter={togglePage}
-        onClick={togglePage}
+        onMouseEnter={toggleImage}
+        onClick={toggleImage}
         aria-label="View Next Collection Page"
       >
         <div className="absolute left-0 top-0 w-full h-full object-contain [&_img]:object-contain [&_img]:w-full [&_img]:h-full">
-          <Image id={pages[selectedPage].image} />
+          <Image id={selectedImage === 'mainImage' ? mainImage : backImage} />
         </div>
       </div>
       <div className="flex flex-col gap-2 p-4 pb-8 lg:p-8 relative">
         <header>
-          <a href={pages[selectedPage].slug} className="group">
+          <a href={slug} className="group">
             <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl group-hover::underline">
               {title[lang]}
             </h2>
