@@ -1,18 +1,13 @@
 import Lenis from './components/providers/Lenis';
 import { ThemeProvider } from './components/providers/Theme';
-import Carousel from './components/sections/Carousel';
-import Editorial from './components/sections/Editorial';
-import Highlights from './components/sections/Highlights';
-import FeaturedCollections from './components/sections/FeaturedCollections';
-import Slider from './components/sections/Slider';
-import { products } from './data/products';
 import GridLinesBackground from './components/ui/GridLinesBackground';
 import Header from './components/ui/Header';
 import Hero from './components/ui/Hero';
 import Footer from './components/footer/Footer';
 import { AppProvider } from './components/providers/AppProvider';
-import { slides } from './data/slides';
 import MainWrapper from './components/ui/MainWrapper';
+import { data } from './data/home';
+import Section from './components/sections/Section';
 
 function App() {
   return (
@@ -25,12 +20,9 @@ function App() {
             <MainWrapper>
               <Hero />
               <div className="relative">
-                <Carousel title="Women New Arrivals" products={products.wommen} />
-                <Carousel title="Men New Arrivals" products={products.men} />
-                <Slider data={slides} />
-                <FeaturedCollections />
-                <Highlights />
-                <Editorial />
+                {data.map((section) => (
+                  <Section key={section._id} section={section} />
+                ))}
               </div>
               <Footer />
             </MainWrapper>

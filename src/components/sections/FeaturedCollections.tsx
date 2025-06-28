@@ -3,6 +3,12 @@ import { collections, type CollectionType } from '../../data/collections';
 import { useApp } from '../providers/useApp';
 import Image from '../ui/Image';
 
+export type FeaturedCollectionsSectionType = {
+  _type: 'featuredCollections';
+  _id: string;
+  collections: CollectionType[];
+};
+
 export default function FeaturedCollections() {
   const { lang } = useApp();
 
@@ -42,11 +48,17 @@ function FeaturedCollection({
       </div>
       <div className="flex flex-col gap-2 p-4 pb-8 lg:p-8 relative">
         <header>
-          <a href={slug} className="group">
-            <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl group-hover::underline">
-              {title[lang]}
-            </h2>
-            {subtitle && <p className="text-sm">{subtitle[lang]}</p>}
+          <h2 className="mb-1 text-2xl leading-[1.1] lg:text-4xl group-hover:underline">
+            {title[lang]}
+          </h2>
+          {subtitle && (
+            <p className="text-sm">
+              {subtitle[lang]}
+              <span>. </span>
+            </p>
+          )}
+          <a href={slug} className="hover:underline uppercase text-sm">
+            Explore the collection.
           </a>
         </header>
       </div>

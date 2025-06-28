@@ -5,7 +5,16 @@ import ProductCard from '../product/ProductCard';
 import { useApp } from '../providers/useApp';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
-export default function Carousel({ title, products }: { title: string; products: Products }) {
+export type CarouselSectionType = {
+  _type: 'carousel';
+  _id: string;
+  title: {
+    en: string;
+    ar: string;
+  };
+  products: Products;
+};
+export default function Carousel({ title, products }: CarouselSectionType) {
   const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
@@ -18,7 +27,7 @@ export default function Carousel({ title, products }: { title: string; products:
 
   return (
     <section className="border-b dark:border-b-white relative">
-      <SectionHeader title={title} />
+      <SectionHeader title={title[lang]} />
       <button
         className="cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl xl:left-8"
         onClick={onPrevButtonClick}

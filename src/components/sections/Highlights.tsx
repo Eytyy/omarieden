@@ -5,10 +5,16 @@ import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { cn } from '../../lib/utils';
-import highlights, { type HighlightType } from '../../data/highlights';
 import { useState } from 'react';
+import type { HighlightType } from '../../data/highlights';
 
-export default function Highlights() {
+export type HighlightsSectionType = {
+  _type: 'highlights';
+  _id: string;
+  highlights: HighlightType[];
+};
+
+export default function Highlights({ highlights }: HighlightsSectionType) {
   const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,

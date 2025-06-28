@@ -5,7 +5,13 @@ import { useApp } from '../providers/useApp';
 import SliderButtons from '../ui/SliderButtons';
 import type { SlideType } from '../../data/slides';
 
-export default function Slider({ data }: { data: SlideType[] }) {
+export type SliderSectionType = {
+  _type: 'slider';
+  _id: string;
+  slides: SlideType[];
+};
+
+export default function Slider({ slides }: SliderSectionType) {
   const { lang } = useApp();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
@@ -19,7 +25,7 @@ export default function Slider({ data }: { data: SlideType[] }) {
       <div className="embla h-full relative">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom h-full">
-            {data.map((slide, index) => (
+            {slides.map((slide, index) => (
               <Slide key={slide.id} slide={slide} index={index} lang={lang} />
             ))}
           </div>

@@ -1,4 +1,5 @@
-export const editorial = {
+export const editorial_mix = {
+  format: 'mix',
   title: {
     en: 'FOCUS ON: ACTIVE',
     ar: 'التركيز على: النشاط',
@@ -104,6 +105,25 @@ export const editorial = {
     ],
   },
 };
+
+export const editorial_men = {
+  format: 'men',
+  title: editorial_mix.title,
+  slug: '/editorial/focus-on-active-men',
+  mainImage: editorial_mix.men.mainImage,
+  products: editorial_mix.men.products,
+} as const;
+
+export const editorial_women = {
+  format: 'women',
+  title: editorial_mix.title,
+  slug: '/editorial/focus-on-active-women',
+  mainImage: editorial_mix.women.mainImage,
+  products: editorial_mix.women.products,
+} as const;
+
+export type MixedEditorialType = typeof editorial_mix;
+export type SingleEditorialType = typeof editorial_men | typeof editorial_women;
 
 export type EditorialProduct = {
   id: number;

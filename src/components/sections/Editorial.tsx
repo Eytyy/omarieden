@@ -3,30 +3,58 @@ import { cn } from '../../lib/utils';
 import Image from '../ui/Image';
 import { useApp } from '../providers/useApp';
 import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
-import { editorial, type EditorialProduct } from '../../data/editorial';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import EditorialProductCard from '../product/EditorialProductCard';
 import { useState } from 'react';
+import type {
+  EditorialProduct,
+  MixedEditorialType,
+  SingleEditorialType,
+} from '../../data/editorial';
 
-export default function Editorial() {
+export type EditorialSectionType = {
+  _type: 'editorial';
+  _id: string;
+  edit: MixedEditorialType | SingleEditorialType;
+};
+
+export default function Editorial({ edit }: EditorialSectionType) {
   const { lang } = useApp();
+  if (edit.format === 'mix') {
+    return <MultipleEdits edit={edit} lang={lang} />;
+  } else if (edit.format === 'men') {
+    return <SingleEdit edit={edit} lang={lang} />;
+  }
+}
+
+function MultipleEdits({ edit, lang }: { edit: MixedEditorialType; lang: 'en' | 'ar' }) {
   const [selectedSection, setSelectedSection] = useState<'men' | 'women'>('women');
 
   const toggleSection = () => {
     setSelectedSection((prev) => (prev === 'men' ? 'women' : 'men'));
   };
-
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <Edit
         lang={lang}
         toggleSection={toggleSection}
-        title={editorial.title}
-        slug={editorial.slug}
-        mainImage={editorial[selectedSection].mainImage}
+        title={edit.title}
+        slug={edit.slug}
+        mainImage={edit[selectedSection].mainImage}
       />
       <div className="2xl:col-span-2 relative">
-        <ProductsCarousel products={editorial[selectedSection].products} lang={lang} />
+        <ProductsCarousel products={edit[selectedSection].products} lang={lang} />
+      </div>
+    </section>
+  );
+}
+
+function SingleEdit({ edit, lang }: { edit: SingleEditorialType; lang: 'en' | 'ar' }) {
+  return (
+    <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
+      <Edit lang={lang} title={edit.title} slug={edit.slug} mainImage={edit.mainImage} />
+      <div className="2xl:col-span-2 relative">
+        <ProductsCarousel products={edit.products} lang={lang} />
       </div>
     </section>
   );
@@ -40,7 +68,7 @@ function Edit({
   toggleSection,
 }: {
   lang: 'en' | 'ar';
-  toggleSection: () => void;
+  toggleSection?: () => void;
   title: { en: string; ar: string };
   slug: string;
   mainImage: string;
@@ -53,12 +81,13 @@ function Edit({
       >
         <Image id={mainImage} />
       </div>
-      <header className="p-4 lg:p-8 relative">
-        <a href="/" className="text-xs lg:text-sm uppercase text-[#999] mb-1">
+      <header className="p-4 lg:p-8 relative flex flex-col gap-1">
+        <a href="/" className="text-xs lg:text-sm uppercase text-[#999] hover:underline">
           {lang == 'en' ? 'Editorial' : 'المجلة التحريرية'}
         </a>
-        <a href={slug}>
-          <h2 className="text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
+        <h2 className="text-2xl leading-[1.1] lg:text-4xl">{title[lang]}</h2>
+        <a href={slug} className="hover:underline  text-sm uppercase">
+          Explore the Edit
         </a>
       </header>
     </div>
