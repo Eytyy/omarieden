@@ -42,9 +42,9 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
 
 ```
 /src
-├─ features/        # Page-specific sections (hero, cards, editorial, etc.)
-│   ├─ hero/        # HeroSection, data, types
-│   ├─ cards/       # CardGrid, Card components, types
+├─ features/            # Page-specific sections (hero, cards, editorial, etc.)
+│   ├─ hero-slider/     # HeroSection, data, types
+│   ├─ editorial/       # EditorialSection, data, types
 │   └─ ...
 │
 ├─ shared/          # Reusable UI components & utilities
@@ -55,7 +55,7 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
 │
 ├─ hooks/           # Custom React hooks (useApp, usePrevNextButtons)
 │
-├─ styles/          # Tailwind imports & global CSS (includes font-face rules)
+├─ index.css        # Tailwind imports & global CSS (includes font-face rules)
 │
 └─ App.tsx          # AppProviders, global layout, Lenis
 ```
@@ -64,6 +64,3 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
 - **Shared**: truly global components and utilities reused across features.
 - **Data**: static content files (`home.ts`, `hero.ts`, etc.) that feed the features.
 - **Hooks & Lib**: cross-cutting logic (carousel controls, theme context, etc.).
-- **Styles**: Tailwind entrypoint and any global CSS (fonts, custom variants).
-
-Use absolute imports (e.g. `import HeroSection from '@/features/hero/HeroSection'`) to easily navigate modules. Each folder has an `index.ts` to expose the public API.
