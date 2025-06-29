@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:tw": "npx @tailwindcss/cli --content \"./src/**/*.{js,jsx,ts,tsx}\" --output \"./public/tw-home.css\""
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@tailwindcss/cli": "^4.1.11",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",

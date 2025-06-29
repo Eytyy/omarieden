@@ -1,0 +1,38 @@
+{
+  "fonts": {
+    "sans": "var(--font-sans)",
+    "display": "var(--font-display)",
+    "sans-ar": "var(--font-sans-ar)",
+    "display-ar": "var(--font-display-ar)"
+  },
+  "fontSizes": {
+    "xs": "0.75rem /* 12px */",
+    "sm": "0.875rem /* 14px */",
+    "base": "1rem /* 16px */",
+    "lg": "1.125rem /* 18px */",
+    "xl": "1.25rem /* 20px */",
+    "2xl": "1.5rem /* 24px */",
+    "3xl": "1.875rem /* 30px */",
+    "4xl": "2.25rem /* 36px */"
+  },
+  "spacing": {
+    "px": "1px",
+    "0": "0px",
+    "0.5": "0.125rem /* 2px */",
+    "1": "0.25rem /* 4px */",
+    "2": "0.5rem /* 8px */",
+    "3": "0.75rem /* 12px */",
+    "4": "1rem /* 16px */",
+    "6": "1.5rem /* 24px */",
+    "8": "2rem /* 32px */",
+    "12": "3rem /* 48px */",
+    "16": "4rem /* 64px */"
+  },
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  }
+}

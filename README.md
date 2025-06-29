@@ -1,54 +1,69 @@
-# React + TypeScript + Vite
+# Design Tokens & Codebase Navigation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide explains the purpose of the `design-tokens.json` file and provides an overview of how the project is organized.
 
-Currently, two official plugins are available:
+## What are design tokens?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Design tokens are the single source of truth for your project’s visual style. They include:
 
-## Expanding the ESLint configuration
+- **Fonts**: font families and weights
+- **Font Sizes**: text scale (xs → 4xl)
+- **Spacing**: margin, padding, grid gaps
+- **Breakpoints**: responsive breakpoints (sm → 2xl)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwind scales used in the codebase. You can import these values into Bootstrap/Sass or expose them as CSS custom properties.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## How to use the tokens
+
+1. **Sass Variables**
+   Convert each token to a Sass variable in your Bootstrap build:
+
+   ```scss
+   $font-size-base: 1rem; // from tokens.fontSizes.base
+   $spacer-4: 1rem; // from tokens.spacing[4]
+   $breakpoint-md: 768px; // from tokens.breakpoints.md
+   ```
+
+2. **CSS Custom Properties**
+   Alternatively, drop `design-tokens.json` into your build pipeline and generate CSS vars:
+
+   ```css
+   :root {
+     --font-size-base: 1rem;
+     --space-4: 1rem;
+     --breakpoint-md: 768px;
+   }
+   ```
+
+3. **Utility Classes**
+   When mapping Tailwind utilities (e.g. `text-lg`, `p-4`) to Bootstrap, reference the tokens to ensure the exact same values.
+
+## Codebase Overview
+
+```
+/src
+├─ features/        # Page-specific sections (hero, cards, editorial, etc.)
+│   ├─ hero/        # HeroSection, data, types
+│   ├─ cards/       # CardGrid, Card components, types
+│   └─ ...
+│
+├─ shared/          # Reusable UI components & utilities
+│   ├─ ui/          # Buttons, navigation, footer, etc.
+│   └─ product/     # ProductCard, ProductImage, helpers
+│
+├─ data/            # Static data imports for pages
+│
+├─ hooks/           # Custom React hooks (useApp, usePrevNextButtons)
+│
+├─ styles/          # Tailwind imports & global CSS (includes font-face rules)
+│
+└─ App.tsx          # AppProviders, global layout, Lenis
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Features**: self-contained folders grouping each homepage section’s components, data, and types.
+- **Shared**: truly global components and utilities reused across features.
+- **Data**: static content files (`home.ts`, `hero.ts`, etc.) that feed the features.
+- **Hooks & Lib**: cross-cutting logic (carousel controls, theme context, etc.).
+- **Styles**: Tailwind entrypoint and any global CSS (fonts, custom variants).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Use absolute imports (e.g. `import HeroSection from '@/features/hero/HeroSection'`) to easily navigate modules. Each folder has an `index.ts` to expose the public API.

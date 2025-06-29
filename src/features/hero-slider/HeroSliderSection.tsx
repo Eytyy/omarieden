@@ -16,7 +16,7 @@ export default function HeroSliderSection({ data }: SliderSectionType) {
   });
 
   return (
-    <div className="h-[calc(100dvh-69px)]  lg:h-auto lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
+    <div className="h-[calc(100dvh-69px)] lg:h-auto lg:aspect-video justify-center bg-black text-white relative border-b-black border-b dark:border-b-white">
       <div className="embla h-full relative">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
           <div className="flex touch-pan-y touch-pinch-zoom h-full">
