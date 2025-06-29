@@ -1,6 +1,7 @@
+import type { Product } from '@/types';
+
 import { ProductCardDetails } from '@/shared/product/ProductCardDetails';
 import { ProductCardImage } from '@/shared/product/ProductCardImage';
-import type { Product } from '../products-carousel';
 
 export default function ProductCard({ product }: { product: Product }) {
   const { name, designer, price, mainImage, slug } = product;

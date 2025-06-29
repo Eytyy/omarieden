@@ -1,7 +1,9 @@
-import { cn } from '../../lib/utils';
-import { usePrevNextButtons } from '../../hooks/usePrevNextButtons';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
+
+import { cn } from '@/lib/utils';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+
 type Props = {
   format?: 'slides' | 'carousel';
   className?: string;

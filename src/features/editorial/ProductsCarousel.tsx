@@ -2,9 +2,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 import type { EditorialProduct } from './types';
-import ProductCard from './ProductCard';
-import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
 import { cn } from '@/lib/utils';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+
+import ProductCard from './ProductCard';
 
 export default function ProductsCarousel({
   products,
@@ -28,20 +29,7 @@ export default function ProductsCarousel({
 
   return (
     <>
-      <button
-        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl -translate-y-1/2 lg:right-4 lg:left-auto lg:rotate-90 lg:-translate-y-full"
-        onClick={onPrevButtonClick}
-        aria-label="Previous Slide"
-      >
-        <MdKeyboardArrowLeft />
-      </button>
-      <button
-        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 z-10 text-4xl -translate-y-1/2 lg:rotate-90 lg:translate-y-0"
-        onClick={onNextButtonClick}
-        aria-label="Next Slide"
-      >
-        <MdKeyboardArrowRight />
-      </button>
+      <Controls onPrevButtonClick={onPrevButtonClick} onNextButtonClick={onNextButtonClick} />
       <GridLine />
       <div className="overflow-hidden relative" ref={emblaRef}>
         <div className="flex lg:flex-col lg:h-screen touch-pan-y touch-pinch-zoom 2xl:grid 2xl:grid-cols-2 2xl:h-full">
@@ -58,6 +46,25 @@ export default function ProductsCarousel({
         </div>
       </div>
     </>
+  );
+}
+
+function Controls({
+  onPrevButtonClick,
+  onNextButtonClick,
+}: {
+  onPrevButtonClick: () => void;
+  onNextButtonClick: () => void;
+}) {
+  return (
+    <div className="absolute top-1/2 left-0 right-0 z-10 flex justify-between">
+      <button className="text-4xl" onClick={onPrevButtonClick} aria-label="Previous Slide">
+        <MdKeyboardArrowLeft />
+      </button>
+      <button className="text-4xl" onClick={onNextButtonClick} aria-label="Next Slide">
+        <MdKeyboardArrowRight />
+      </button>
+    </div>
   );
 }
 

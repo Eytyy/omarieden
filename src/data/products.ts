@@ -96,5 +96,5 @@ const menu_new = [
 
 export const products = {
   men: menu_new,
-  wommen: women_new,
+  women: women_new,
 };

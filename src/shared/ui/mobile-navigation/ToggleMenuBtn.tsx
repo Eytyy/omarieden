@@ -1,5 +1,6 @@
-import MenuBlock from './MenuBlock';
 import { FaPlus, FaMinus } from 'react-icons/fa6';
+import MenuBlock from './MenuBlock';
+
 export const ToggleMenuBtn = ({ onClick, isOpen }: { isOpen: boolean; onClick: () => void }) => (
   <MenuBlock
     className="col-span-2 items-start flex w-full uppercase cursor-pointer"

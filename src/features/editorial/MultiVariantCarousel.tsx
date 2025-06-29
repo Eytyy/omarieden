@@ -1,9 +1,13 @@
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import useEmblaCarousel from 'embla-carousel-react';
+
+import Image from '@/shared/ui/Image';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+
 import type { EditorialSectionData } from './types';
+
 import { EditorialHeader } from './EditorialHeader';
 import ProductsCarousel from './ProductsCarousel';
-import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
-import Image from '@/shared/ui/Image';
 
 export default function MultiVariantCarousel({
   edit,
@@ -18,13 +22,14 @@ export default function MultiVariantCarousel({
     loop: true,
     direction: lang === 'ar' ? 'rtl' : 'ltr',
   });
-  const { selectedIndex } = usePrevNextButtons(emblaApi);
+  const { selectedIndex, onNextButtonClick, onPrevButtonClick } = usePrevNextButtons(emblaApi);
   const products = edit.variants[selectedIndex].products;
 
   return (
     <section className="lg:grid lg:grid-cols-[2fr_1fr] 2xl:grid-cols-4 border-b border-b-black dark:border-b-white relative">
       <div className="2xl:col-span-2 flex flex-col justify-end bg-white border-b lg:border-b-0 lg:rtl:border-l lg:ltr:border-r relative dark:bg-black h-[66.66vh] lg:h-auto ">
         <div className="embla h-full relative">
+          <Controls onPrevButtonClick={onPrevButtonClick} onNextButtonClick={onNextButtonClick} />
           <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
             <div className="flex touch-pan-y touch-pinch-zoom h-full">
               {edit.variants.map((variant) => (
@@ -46,5 +51,32 @@ export default function MultiVariantCarousel({
         <ProductsCarousel products={products} lang={lang} />
       </div>
     </section>
+  );
+}
+
+function Controls({
+  onPrevButtonClick,
+  onNextButtonClick,
+}: {
+  onPrevButtonClick: () => void;
+  onNextButtonClick: () => void;
+}) {
+  return (
+    <div className="absolute top-1/2 left-0 right-0 z-10 flex justify-between">
+      <button
+        className="text-4xl cursor-pointer"
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
+        <MdKeyboardArrowLeft />
+      </button>
+      <button
+        className="text-4xl cursor-pointer"
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
+        <MdKeyboardArrowRight />
+      </button>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { ProductCardImages } from '@/shared/product/ProductCardImages';
-import type { Product } from './types';
+import type { Product } from '@/types';
 import { ProductCardImage } from '@/shared/product/ProductCardImage';
 import { ProductCardDetails } from '@/shared/product/ProductCardDetails';
 

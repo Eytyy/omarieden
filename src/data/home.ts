@@ -17,7 +17,7 @@ export const data: HomeDataPayload[] = [
       en: 'Womens New Arrivals',
       ar: 'وصل حديثًا - نساء',
     },
-    products: products.wommen,
+    products: products.women,
   },
   {
     _type: 'carousel',

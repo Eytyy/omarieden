@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
+import { cn } from '@/lib/utils';
+import { menu } from '@/data/main-menu';
+
+import { useApp } from '@/shared/providers/useApp';
+import { ToggleMenuBtn } from './ToggleMenuBtn';
 import UserNav from './UserNav';
 import MainNav from './MainNav';
-import { ToggleMenuBtn } from './ToggleMenuBtn';
 import MenuBlock from './MenuBlock';
-import { useApp } from '../../providers/useApp';
 import HomeIcon from '../HomeIcon';
-import { cn } from '../../../lib/utils';
-import { menu } from '../../../data/main-menu';
 
 export default function Full() {
   const [isOpen, setIsOpen] = useState(false);

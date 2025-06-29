@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import type { FeaturedBrandType } from './types';
 import Image from '@/shared/ui/Image';
 

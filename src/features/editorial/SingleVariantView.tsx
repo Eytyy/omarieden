@@ -1,7 +1,9 @@
-import Image from '@/shared/ui/Image';
-import { EditorialHeader } from './EditorialHeader';
-import ProductsCarousel from './ProductsCarousel';
 import type { EditorialSectionData } from './types';
+
+import Image from '@/shared/ui/Image';
+
+import ProductsCarousel from './ProductsCarousel';
+import { EditorialHeader } from './EditorialHeader';
 
 export default function SingleVariantView({
   edit,

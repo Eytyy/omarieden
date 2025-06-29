@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import type { CollectionType, FeaturedCollectionsSectionType } from './types';
+
 import { useApp } from '@/shared/providers/useApp';
 import Image from '@/shared/ui/Image';
 

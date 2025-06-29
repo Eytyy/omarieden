@@ -1,4 +1,5 @@
 import { data as sections } from '@/data/home';
+
 import Hero from '@/shared/ui/Hero';
 import ProductsCarouselSection from '../products-carousel';
 import HeroSliderSection from '../hero-slider';

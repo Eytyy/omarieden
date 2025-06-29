@@ -1,7 +1,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import type { CarouselSectionType } from './types';
-import Header from './Header';
+import ProductsCarouselSectionHeader from './ProductsCarouselSectionHeader';
 import ProductCard from './ProductCard';
 import { useApp } from '@/shared/providers/useApp';
 import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
@@ -19,7 +19,7 @@ export default function ProductsCarouselSection({ title, products }: CarouselSec
 
   return (
     <section className="border-b dark:border-b-white relative">
-      <Header title={title[lang]} />
+      <ProductsCarouselSectionHeader title={title[lang]} />
       <Controls onPrevButtonClick={onPrevButtonClick} onNextButtonClick={onNextButtonClick} />
       <div className="embla h-full relative pt-10">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>

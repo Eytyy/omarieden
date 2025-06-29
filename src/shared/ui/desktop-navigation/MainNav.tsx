@@ -30,7 +30,7 @@ export default function MainNav() {
         )}
       >
         <div className="flex gap-4">
-          <a href="/" aria-lable="Home" title="Home">
+          <a href="/" aria-label="Home" title="Home">
             <HomeIcon invert={activeMenu !== null} />
           </a>
           <ul className="flex flex-col gap-2">
