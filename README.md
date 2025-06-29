@@ -1,6 +1,19 @@
-# Design Tokens & Codebase Navigation
+# Omarieden Home Page Style Guide
 
-This guide explains the purpose of the `design-tokens.json` file and provides an overview of how the project is organized.
+This guide provides design token references, codebase structure, and additional information for developers working with the Omarieden homepage frontend.
+
+## Contents
+
+- [What are design tokens?](#what-are-design-tokens)
+- [How to use the tokens](#how-to-use-the-tokens)
+- [Codebase Overview](#codebase-overview)
+- [Purged Tailwind CSS](#purged-tailwind-css)
+- [Running the Project Locally](#running-the-project-locally)
+- [Tooling Notes](#tooling-notes)
+
+## Project Context
+
+This repository contains the homepage front-end implementation for **Omarieden**, handed off to the client as an alternative to a Figma design. The implementation uses Tailwind CSS and React. The client’s development team will be integrating it into a Laravel + Bootstrap stack. This guide exists to help clarify the design decisions and token logic used across the project.
 
 ## What are design tokens?
 
@@ -11,11 +24,11 @@ Design tokens are the single source of truth for your project’s visual style. 
 - **Spacing**: margin, padding, grid gaps
 - **Breakpoints**: responsive breakpoints (sm → 2xl)
 
-The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwind scales used in the codebase. You can import these values into Bootstrap/Sass or expose them as CSS custom properties.
+The [`design-tokens.json`](./design-tokens.json) file bundles the Tailwind scales used in the codebase. These can be imported into Bootstrap/Sass or exposed as CSS custom properties. The project only uses black and white colors, and layout utilities (grid, flex, alignment, etc.) are applied directly via Tailwind utility classes in the code.
 
 ## How to use the tokens
 
-1. **Sass Variables**
+1. **Sass Variables**\
    Convert each token to a Sass variable in your Bootstrap build:
 
    ```scss
@@ -24,7 +37,7 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
    $breakpoint-md: 768px; // from tokens.breakpoints.md
    ```
 
-2. **CSS Custom Properties**
+2. **CSS Custom Properties**\
    Alternatively, drop `design-tokens.json` into your build pipeline and generate CSS vars:
 
    ```css
@@ -35,8 +48,8 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
    }
    ```
 
-3. **Utility Classes**
-   When mapping Tailwind utilities (e.g. `text-lg`, `p-4`) to Bootstrap, reference the tokens to ensure the exact same values.
+3. **Utility Class Mapping**\
+   When mapping Tailwind utility classes (e.g. `text-lg`, `p-4`) to Bootstrap or your Sass utilities, reference the design tokens to ensure alignment.
 
 ## Codebase Overview
 
@@ -47,27 +60,64 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
 │   ├─ editorial/       # EditorialSection, data, types
 │   └─ ...
 │
-├─ shared/          # Reusable UI components & utilities
-│   ├─ ui/          # Buttons, navigation, footer, etc.
-│   └─ product/     # ProductCard, ProductImage, helpers
+├─ shared/              # Reusable UI components & utilities
+│   ├─ ui/              # Buttons, navigation, footer, etc.
+│   └─ product/         # ProductCard, ProductImage, helpers
 │
-├─ data/            # Static data imports for pages
+├─ data/                # Static data imports for pages
 │
-├─ hooks/           # Custom React hooks (useApp, usePrevNextButtons)
+├─ hooks/               # Custom React hooks (useApp, usePrevNextButtons)
 │
-├─ index.css        # Tailwind imports & global CSS (includes font-face rules)
+├─ index.css            # Tailwind imports & global CSS (includes font-face rules)
 │
-└─ App.tsx          # AppProviders, global layout, Lenis
+└─ App.tsx              # AppProviders, global layout, Lenis
 ```
 
-- **Features**: self-contained folders grouping each homepage section’s components, data, and types.
-- **Shared**: truly global components and utilities reused across features.
-- **Data**: static content files (`home.ts`, `hero.ts`, etc.) that feed the features.
-- **Hooks & Lib**: cross-cutting logic (carousel controls, theme context, etc.).
+- **Features**: self-contained folders for each homepage section.
+- **Shared**: global UI components and reusable layout/presentation logic.
+- **Data**: holds static content files used to populate sections.
+- **Hooks**: contains cross-cutting logic for context and behavior.
+- **Styles**: contains global styling imports and font-face declarations.
+
+Use absolute imports throughout the project (e.g. `@/features/editorial/EditorialSection`). Each folder contains an `index.ts` file for re-exports.
 
 ## Purged Tailwind CSS
 
-We’ve generated a purged Tailwind stylesheet containing _only_ the utility classes used on this page.
-To inspect every CSS rule and utility class in use, take a look at:
+We’ve generated a purged Tailwind stylesheet containing _only_ the utility classes used in the homepage. This allows the client’s dev team to quickly inspect all relevant CSS rules without digging through the component tree.
+
+You can view the file here:
 
 [public/tw-home.css](public/tw-home.css)
+
+If you need to regenerate this file (e.g. after adding new utility classes), run:
+
+```bash
+npm run build:tw
+```
+
+This command uses the Tailwind CLI to scan the source code and output a trimmed CSS file with just the used styles.
+
+## Running the Project Locally
+
+To run the homepage locally for inspection or development:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open `http://localhost:5173` in your browser.
+
+Use `npm run build` to generate a production build, and `npm run preview` to view it.
+
+## Tooling Notes
+
+- **Icons:** This project uses [`react-icons`](https://react-icons.github.io/react-icons/) for vector icons. Equivalent raw SVGs will be available in the `public/icons` folder.
+
+- **Framer Motion:** Used for micro-interactions and subtle animation throughout the UI. The library is optional and can be replaced with any other JavaScript animation solution. Framer Motion also works in vanilla JS without React.
+
+- **Embla Carousel:** Used for horizontal sliders and carousels. This is a lightweight dependency and can also be used with vanilla JavaScript if needed.
+
+---
+
+Let me know if anything is unclear or if you'd prefer a Figma layout to supplement this code-based design handoff.
