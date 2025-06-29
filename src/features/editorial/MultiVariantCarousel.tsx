@@ -64,14 +64,14 @@ function Controls({
   return (
     <>
       <button
-        className="text-4xl cursor-pointer absolute top-1/2 ltr:left-0 rtl:right-0 z-10 rtl:rotate-180"
+        className="text-4xl cursor-pointer absolute top-1/2 ltr:lg:left-4 ltr:left-0 rtl:right-0 rtl:lg:right-4 z-10 rtl:rotate-180"
         onClick={onPrevButtonClick}
         aria-label="Previous Slide"
       >
         <MdKeyboardArrowLeft />
       </button>
       <button
-        className="text-4xl cursor-pointer absolute top-1/2 ltr:right-0 rtl:left-0 z-10 rtl:rotate-180"
+        className="text-4xl cursor-pointer absolute top-1/2 ltr:lg:right-4 ltr:right-0 rtl:left-0 z-10 rtl:rotate-180 rtl:lg:left-4"
         onClick={onNextButtonClick}
         aria-label="Next Slide"
       >
