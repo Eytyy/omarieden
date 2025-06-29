@@ -117,7 +117,3 @@ Use `npm run build` to generate a production build, and `npm run preview` to vie
 - **Framer Motion:** Used for micro-interactions and subtle animation throughout the UI. The library is optional and can be replaced with any other JavaScript animation solution. Framer Motion also works in vanilla JS without React.
 
 - **Embla Carousel:** Used for horizontal sliders and carousels. This is a lightweight dependency and can also be used with vanilla JavaScript if needed.
-
----
-
-Let me know if anything is unclear or if you'd prefer a Figma layout to supplement this code-based design handoff.
