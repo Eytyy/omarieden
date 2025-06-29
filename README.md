@@ -81,6 +81,18 @@ The [`design-tokens.json`](./design-tokens.json) file bundles the Tailwind scale
 
 Use absolute imports throughout the project (e.g. `@/features/editorial/EditorialSection`). Each folder contains an `index.ts` file for re-exports.
 
+## Homepage Section Overview
+
+The homepage is composed of **modular sections** that can be added, removed, or reordered freely. Each section is self-contained and can be reused multiple times. The sections include:
+
+- **Hero Slider** – A full-width slider (image or video) with a headline, description, and link. Use it for campaigns, collections, or any featured content.
+- **Products Carousel** – A horizontally scrollable list of products showcasing selected items with hover interactions.
+- **Featured Collections** – A grid-based layout highlighting curated product groups or collections.
+- **Editorial Section** – An outfit-focused section that shows an overview of the look and a list of products featured on the model. It has **two variants**:
+  - **Single Variant**: Displays one outfit overview.
+  - **Multi-Variant**: Provides a toggle (e.g. men/women) when multiple outfit versions exist.
+- **Featured Brands** – A carousel showcasing brand cards.
+
 ## Purged Tailwind CSS
 
 We’ve generated a purged Tailwind stylesheet containing _only_ the utility classes used in the homepage. This allows the client’s dev team to quickly inspect all relevant CSS rules without digging through the component tree.
