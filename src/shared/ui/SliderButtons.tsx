@@ -1,8 +1,8 @@
 import type { EmblaCarouselType } from 'embla-carousel';
-import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
 
 import { cn } from '@/lib/utils';
 import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 type Props = {
   format?: 'slides' | 'carousel';
@@ -28,7 +28,7 @@ export default function SliderButtons({ className, format = 'carousel', emblaApi
         onClick={onPrevButtonClick}
         aria-label="Previous Slide"
       >
-        <HiArrowLongLeft />
+        <MdKeyboardArrowLeft />
       </button>
       <button
         className={cn(
@@ -38,7 +38,7 @@ export default function SliderButtons({ className, format = 'carousel', emblaApi
         onClick={onNextButtonClick}
         aria-label="Next Slide"
       >
-        <HiArrowLongRight />
+        <MdKeyboardArrowRight />
       </button>
     </div>
   );

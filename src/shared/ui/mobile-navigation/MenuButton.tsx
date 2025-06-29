@@ -23,7 +23,7 @@ const MenuButton = ({
     <li className={cn('relative group border-t', hide ? 'hidden' : 'block')}>
       <a
         href={item.href}
-        className={cn('flex items-center justify-between gap-2 p-4')}
+        className={cn('flex items-center justify-between gap-2 p-4 rtl:text-lg')}
         onClick={handleClick}
       >
         <div>{item.label}</div>

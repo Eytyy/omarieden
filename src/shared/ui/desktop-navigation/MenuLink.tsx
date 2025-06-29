@@ -9,7 +9,7 @@ export default function MenuLink({ item, activeMenu }: Props) {
   const active = activeMenu === item.id;
   return (
     <li className="relative group uppercase">
-      <a href={item.href} className="text-lg flex items-center gap-2">
+      <a href={item.href} className="text-lg rtl:text-xl flex items-center gap-2">
         {item.subMenu ? (
           <div className="font-display-ar text-3xl w-5 flex justify-center">
             {active ? '-' : '+'}

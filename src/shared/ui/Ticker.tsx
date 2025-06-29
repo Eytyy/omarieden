@@ -6,7 +6,7 @@ import { useApp } from '../providers/useApp';
 export default function Ticker() {
   const { lang } = useApp();
   return (
-    <div className="hero--ticker pb-4 lg:pb-8 w-full overflow-hidden">
+    <div className="hero--ticker pb-4 lg:pb-8 w-full overflow-hidden rtl:text-lg">
       <Marquee speed={100} lang={lang}>
         <h2>
           {[0, 1, 2, 3].map((i) => (

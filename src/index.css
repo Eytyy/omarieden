@@ -33,6 +33,9 @@
   --font-display: 'Basteleur Bold', sans-serif;
   --font-sans-ar: 'Lenos Light', sans-serif;
   --font-display-ar: 'Lenos SemiBold', sans-serif;
+
+  /* arabic specific font sizes */
+  --text-5xl: 2.5rem; /*40px*/
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

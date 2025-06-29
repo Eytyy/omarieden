@@ -10,7 +10,7 @@ export const ProductCardDetails = ({
     <div className="flex flex-col gap-1 p-4 pb-8 lg:p-8">
       <a
         href={designer.slug}
-        className="text-gray-400 hover:underline uppercase text-xs lg:text-sm"
+        className="text-gray-400 hover:underline uppercase text-xs lg:text-sm font-sans"
       >
         {designer.name}
       </a>

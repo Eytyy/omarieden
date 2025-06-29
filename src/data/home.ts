@@ -46,6 +46,14 @@ export const data: HomeDataPayload[] = [
   {
     _type: 'featuredBrands',
     _id: 'brands',
+    title: {
+      en: 'Brands Highlight of the Month',
+      ar: 'أبرز العلامات التجارية لهذا الشهر',
+    },
+    description: {
+      en: 'A curated selection of brands that are redefining the fashion scene.',
+      ar: 'مجموعة مختارة من العلامات التجارية التي تعيد تعريف مشهد الموضة.',
+    },
     data: brands,
   },
 ];

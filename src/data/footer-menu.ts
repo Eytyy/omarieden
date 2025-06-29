@@ -1,6 +1,9 @@
 const footer_menu = [
   {
-    title: 'Learn',
+    title: {
+      en: 'Learn',
+      ar: 'تعلم',
+    },
     links: [
       { name: { en: 'FAQ', ar: 'الأسئلة الشائعة' }, href: '#' },
       { name: { en: 'Editorial', ar: 'المجلة التحريرية' }, href: '#' },
@@ -8,7 +11,10 @@ const footer_menu = [
     ],
   },
   {
-    title: 'Omarieden',
+    title: {
+      en: 'Omarieden',
+      ar: 'أوماريدن',
+    },
     links: [
       { name: { en: 'About', ar: 'عن أوماريدن' }, href: '#' },
       { name: { en: 'Discover', ar: 'اكتشف' }, href: '#' },
@@ -17,7 +23,10 @@ const footer_menu = [
     ],
   },
   {
-    title: 'Policies',
+    title: {
+      en: 'Policies',
+      ar: 'السياسات',
+    },
     links: [
       { name: { en: 'Cookie Policy', ar: 'سياسة الكوكيز' }, href: '#' },
       { name: { en: 'Privacy Statement', ar: 'بيان الخصوصية' }, href: '#' },
@@ -26,7 +35,10 @@ const footer_menu = [
     ],
   },
   {
-    title: 'Follow Us',
+    title: {
+      en: 'Follow Us',
+      ar: 'تابعنا',
+    },
     links: [
       { name: { en: 'Instagram', ar: 'إنستغرام' }, href: '#' },
       { name: { en: 'Facebook', ar: 'فيسبوك' }, href: '#' },
@@ -37,7 +49,10 @@ const footer_menu = [
 ];
 
 export type FooterMenuType = {
-  title: string;
+  title: {
+    en: string;
+    ar: string;
+  };
   links: { name: { en: string; ar: string }; href: string }[];
 };
 

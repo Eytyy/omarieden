@@ -62,21 +62,21 @@ function Controls({
   onNextButtonClick: () => void;
 }) {
   return (
-    <div className="absolute top-1/2 left-0 right-0 z-10 flex justify-between">
+    <>
       <button
-        className="text-4xl cursor-pointer"
+        className="text-4xl cursor-pointer absolute top-1/2 ltr:left-0 rtl:right-0 z-10 rtl:rotate-180"
         onClick={onPrevButtonClick}
         aria-label="Previous Slide"
       >
         <MdKeyboardArrowLeft />
       </button>
       <button
-        className="text-4xl cursor-pointer"
+        className="text-4xl cursor-pointer absolute top-1/2 ltr:right-0 rtl:left-0 z-10 rtl:rotate-180"
         onClick={onNextButtonClick}
         aria-label="Next Slide"
       >
         <MdKeyboardArrowRight />
       </button>
-    </div>
+    </>
   );
 }

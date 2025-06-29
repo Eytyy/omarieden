@@ -17,8 +17,11 @@ export default function MenuButton({ item, activeMenu, onClick }: Props) {
 
   return (
     <li className="relative group flex flex-col">
-      <button className="cursor-pointer text-lg flex items-center gap-2" onClick={handleClick}>
-        <div className="flex justify-center font-display">
+      <button
+        className="cursor-pointer text-lg rtl:text-xl flex items-center gap-2"
+        onClick={handleClick}
+      >
+        <div className="flex justify-center">
           {active ? <FaMinus size={20} /> : <FaPlus size={20} />}
         </div>
         <div className="uppercase">{item.label}</div>

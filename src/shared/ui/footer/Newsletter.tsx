@@ -4,7 +4,7 @@ type Props = {
 
 export default function Newsletter({ lang }: Props) {
   return (
-    <div className="flex flex-col gap-1 w-full lg:w-auto p-4 lg:p-0 border-t lg:border-t-0">
+    <div className="flex flex-col gap-1 w-full lg:w-auto p-4 lg:p-0 border-t lg:border-t-0 rtl:text-lg">
       <h3 className="ltr:font-display rtl:font-display-ar">
         {lang == 'en' ? 'Updates' : 'التحديثات'}
       </h3>

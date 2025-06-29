@@ -19,7 +19,7 @@ export default function ProductsCarouselSection({ title, products }: CarouselSec
 
   return (
     <section className="border-b dark:border-b-white relative">
-      <ProductsCarouselSectionHeader title={title[lang]} />
+      <ProductsCarouselSectionHeader title={title[lang]} lang={lang} />
       <Controls onPrevButtonClick={onPrevButtonClick} onNextButtonClick={onNextButtonClick} />
       <div className="embla h-full relative pt-10">
         <div className="embla__viewport overflow-hidden h-full" ref={emblaRef}>
