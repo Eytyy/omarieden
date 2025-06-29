@@ -32,7 +32,10 @@ export default function UserNav() {
           </button>
           <span>/</span>
           <button
-            className={cn('cursor-pointer', lang === 'ar' ? 'font-display-ar' : 'font-sans-ar')}
+            className={cn(
+              'cursor-pointer text-xl',
+              lang === 'ar' ? 'font-display-ar' : 'font-sans-ar'
+            )}
             onClick={() => setLang('ar')}
             aria-label="Change Language to Arabic"
             title="Change Language to Arabic"
