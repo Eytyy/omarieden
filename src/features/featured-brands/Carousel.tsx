@@ -1,10 +1,10 @@
 import type { EmblaCarouselType } from 'embla-carousel';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import { usePrevNextButtons } from '../../../hooks/usePrevNextButtons';
 import type { FeaturedBrandType } from './types';
 import useEmblaCarousel from 'embla-carousel-react';
 import FeaturedBrandCard from './FeaturedBrandCard';
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
 
 export default function Carousel({ data, lang }: { data: FeaturedBrandType[]; lang: 'en' | 'ar' }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({

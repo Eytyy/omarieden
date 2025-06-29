@@ -1,7 +1,7 @@
 import type { EditorialSectionType } from './types';
-import { useApp } from '../../providers/useApp';
 import MultiVariantCarousel from './MultiVariantCarousel';
 import SingleVariantView from './SingleVariantView';
+import { useApp } from '@/shared/providers/useApp';
 
 export default function EditorialSection({ data }: EditorialSectionType) {
   const { lang } = useApp();

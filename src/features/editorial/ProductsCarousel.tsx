@@ -1,9 +1,10 @@
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import ProductCard from './ProductCard';
-import { cn } from '../../../lib/utils';
-import type { EditorialProduct } from './types';
 import useEmblaCarousel from 'embla-carousel-react';
-import { usePrevNextButtons } from '../../../hooks/usePrevNextButtons';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+
+import type { EditorialProduct } from './types';
+import ProductCard from './ProductCard';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+import { cn } from '@/lib/utils';
 
 export default function ProductsCarousel({
   products,

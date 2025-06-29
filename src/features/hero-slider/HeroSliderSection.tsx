@@ -1,9 +1,10 @@
 import React from 'react';
 import { useInView } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useApp } from '../../providers/useApp';
-import SliderButtons from '../../ui/SliderButtons';
+
 import type { SliderSectionType, SlideType } from './types';
+import { useApp } from '@/shared/providers/useApp';
+import SliderButtons from '@/shared/ui/SliderButtons';
 
 export default function HeroSliderSection({ data }: SliderSectionType) {
   const { lang } = useApp();
@@ -63,10 +64,8 @@ const Video = ({ src, poster }: { src: string; poster?: string }) => {
 
   React.useEffect(() => {
     if (inView && ref.current) {
-      console.log('Video is in view, playing...');
       ref.current.play().catch((error) => console.error('Video play error:', error));
     } else if (ref.current) {
-      console.log('Video is out of view, pausing...');
       ref.current.pause();
     }
   }, [inView]);

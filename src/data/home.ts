@@ -1,13 +1,13 @@
-import type { EditorialSectionType } from '../components/sections/editorial-section/types';
-import type { FeaturedBrandsSectionType } from '../components/sections/featured-brands';
-import type { FeaturedCollectionsSectionType } from '../components/sections/featured-collections/types';
-import type { SliderSectionType } from '../components/sections/hero-slider/types';
-import type { CarouselSectionType } from '../components/sections/products-carousel';
-import { collections } from './collections';
-import { editorialMixed } from './editorial';
-import brands from './featured-brands';
+import type { EditorialSectionType } from '@/features/editorial';
+import { editorialMixed } from '@/features/editorial/data';
+import type { FeaturedBrandsSectionType } from '@/features/featured-brands';
+import type { FeaturedCollectionsSectionType } from '@/features/featured-collections';
+import { collections } from '@/features/featured-collections/data';
+import type { SliderSectionType } from '@/features/hero-slider';
+import { slides } from '@/features/hero-slider/data';
+import type { CarouselSectionType } from '@/features/products-carousel';
 import { products } from './products';
-import { slides } from './slides';
+import brands from '@/features/featured-brands/data';
 
 export const data: HomeDataPayload[] = [
   {
@@ -36,7 +36,7 @@ export const data: HomeDataPayload[] = [
   {
     _type: 'featuredCollections',
     _id: 'featured-collections',
-    collections: collections,
+    data: collections,
   },
   {
     _type: 'editorial',

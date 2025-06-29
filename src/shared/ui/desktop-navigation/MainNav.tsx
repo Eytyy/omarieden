@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { menu as bilingualMenu } from '../../../data/main-menu';
+import { menu as bilingualMenu } from '@/data/main-menu';
 import { SubNav } from './SubNav';
 import MenuItem from './MenuItem';
-import HomeIcon from '../../ui/HomeIcon';
-import { useApp } from '../../providers/useApp';
-import { cn } from '../../../lib/utils';
+import HomeIcon from '@/shared/ui/HomeIcon';
+import { useApp } from '@/shared/providers/useApp';
+import { cn } from '@/lib/utils';
 
 export default function MainNav() {
   const { lang } = useApp();

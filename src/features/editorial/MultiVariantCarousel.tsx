@@ -1,9 +1,9 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import type { EditorialSectionData } from './types';
-import { usePrevNextButtons } from '../../../hooks/usePrevNextButtons';
-import Image from '../../ui/Image';
 import { EditorialHeader } from './EditorialHeader';
 import ProductsCarousel from './ProductsCarousel';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+import Image from '@/shared/ui/Image';
 
 export default function MultiVariantCarousel({
   edit,

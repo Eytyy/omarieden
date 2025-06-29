@@ -1,3 +1,5 @@
+export type MediaType = 'image' | 'video';
+
 export type SlideType = {
   id: number;
   title: {
@@ -9,7 +11,7 @@ export type SlideType = {
     ar: string;
   };
   media: {
-    type: 'image' | 'video';
+    type: MediaType;
     src: string;
     poster?: string; // Optional for videos
   };

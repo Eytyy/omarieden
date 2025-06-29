@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { collections } from '../../../data/collections';
-import { useApp } from '../../providers/useApp';
-import type { CollectionType } from './types';
-import Image from '../../ui/Image';
+import type { CollectionType, FeaturedCollectionsSectionType } from './types';
+import { useApp } from '@/shared/providers/useApp';
+import Image from '@/shared/ui/Image';
 
-export default function FeaturedCollectionSection() {
+export default function FeaturedCollectionSection({ data }: FeaturedCollectionsSectionType) {
   const { lang } = useApp();
 
   return (
     <section className="grid lg:grid-cols-2 lg:border-b border-b-black dark:border-b-white ">
-      {collections.map((item, index) => (
+      {data.map((item, index) => (
         <MultiVariantView key={index} collection={item} lang={lang} />
       ))}
     </section>

@@ -15,5 +15,5 @@ export type CollectionType = {
 export type FeaturedCollectionsSectionType = {
   _type: 'featuredCollections';
   _id: string;
-  collections: CollectionType[];
+  data: CollectionType[];
 };

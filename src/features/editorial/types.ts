@@ -1,4 +1,4 @@
-type Gender = 'men' | 'women';
+export type Gender = 'men' | 'women';
 
 export type EditorialProduct = {
   id: number;

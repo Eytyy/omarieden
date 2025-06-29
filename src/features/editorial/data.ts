@@ -1,3 +1,5 @@
+import type { Gender } from './types';
+
 const men_products = [
   {
     id: 1,
@@ -126,10 +128,14 @@ export const editorialMixed = {
   },
   variants: [
     {
-      audience: 'women',
+      audience: 'women' as Gender,
       mainImage: 'editorial/editorial-outfit_zcjqge',
       products: women_products,
     },
-    { audience: 'men', mainImage: 'editorial/editorial-outfit-men', products: men_products },
+    {
+      audience: 'men' as Gender,
+      mainImage: 'editorial/editorial-outfit-men',
+      products: men_products,
+    },
   ],
 };

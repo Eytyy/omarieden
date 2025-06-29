@@ -1,6 +1,6 @@
 import type { FeaturedBrandsSectionType } from './types';
-import { useApp } from '../../providers/useApp';
 import Carousel from './Carousel';
+import { useApp } from '@/shared/providers/useApp';
 
 export default function FeaturedBrandsSection({ data }: FeaturedBrandsSectionType) {
   const { lang } = useApp();

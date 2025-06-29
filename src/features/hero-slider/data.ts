@@ -1,3 +1,5 @@
+import type { MediaType } from './types';
+
 export const slides = [
   {
     id: 1,
@@ -10,7 +12,7 @@ export const slides = [
       ar: 'تقديم أول مجموعة من أوماريدن للنساء لصيف 2025، مصممة للرحلات الصيفية والأجواء الدافئة. تتميز هذه المجموعة بأقمشة خفيفة الوزن، وألوان زاهية، وقصات أنيقة تجسد جوهر الموضة الصيفية.',
     },
     media: {
-      type: 'video',
+      type: 'video' as MediaType,
       src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361644/fmnkcjtz1rvq7arg6dzu.mp4',
       poster: '/poster.jpg',
     },
@@ -27,7 +29,7 @@ export const slides = [
     },
 
     media: {
-      type: 'video',
+      type: 'video' as MediaType,
       src: 'https://res.cloudinary.com/eytyy/video/upload/v1750361676/tivmprok6uxza7gr7k3m.mp4',
       poster: '/poster.jpg',
     },

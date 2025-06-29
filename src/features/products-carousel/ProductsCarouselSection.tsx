@@ -1,10 +1,10 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import { useApp } from '../../providers/useApp';
-import { usePrevNextButtons } from '../../../hooks/usePrevNextButtons';
-import ProductCard from '../editorial-section/ProductCard';
 import type { CarouselSectionType } from './types';
 import Header from './Header';
+import ProductCard from './ProductCard';
+import { useApp } from '@/shared/providers/useApp';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
 
 export default function ProductsCarouselSection({ title, products }: CarouselSectionType) {
   const { lang } = useApp();

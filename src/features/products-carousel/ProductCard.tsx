@@ -1,7 +1,7 @@
-import type { Product } from '../../data/products';
-import { ProductCardImages } from '../product/ProductCardImages';
-import { ProductCardImage } from '../product/ProductCardImage';
-import { ProductCardDetails } from './ProductCardDetails';
+import { ProductCardImages } from '@/shared/product/ProductCardImages';
+import type { Product } from './types';
+import { ProductCardImage } from '@/shared/product/ProductCardImage';
+import { ProductCardDetails } from '@/shared/product/ProductCardDetails';
 
 export default function ProductCard({ product }: { product: Product }) {
   const { name, designer, price, mainImage, backImage, slug } = product;

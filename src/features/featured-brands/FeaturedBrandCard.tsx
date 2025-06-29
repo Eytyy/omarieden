@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FeaturedBrandType } from './types';
-import Image from '../../ui/Image';
+import Image from '@/shared/ui/Image';
 
 export default function FeaturedBrandCard(item: FeaturedBrandType) {
   const [selectedImage, setSelectedImage] = useState<'mainImage' | 'backImage'>('mainImage');

@@ -1,4 +1,4 @@
-import Image from '../../ui/Image';
+import Image from '@/shared/ui/Image';
 import { EditorialHeader } from './EditorialHeader';
 import ProductsCarousel from './ProductsCarousel';
 import type { EditorialSectionData } from './types';
