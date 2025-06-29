@@ -64,3 +64,10 @@ The [`design-tokens.json`](./design-tokens.json) file bundles exactly the Tailwi
 - **Shared**: truly global components and utilities reused across features.
 - **Data**: static content files (`home.ts`, `hero.ts`, etc.) that feed the features.
 - **Hooks & Lib**: cross-cutting logic (carousel controls, theme context, etc.).
+
+## Purged Tailwind CSS
+
+We’ve generated a purged Tailwind stylesheet containing _only_ the utility classes used on this page.
+To inspect every CSS rule and utility class in use, take a look at:
+
+[public/tw-home.css](public/tw-home.css)
