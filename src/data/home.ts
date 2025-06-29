@@ -1,11 +1,11 @@
-import type { CarouselSectionType } from '../components/sections/Carousel';
-import type { EditorialSectionType } from '../components/sections/Editorial';
-import type { FeaturedCollectionsSectionType } from '../components/sections/FeaturedCollections';
-import type { HighlightsSectionType } from '../components/sections/Highlights';
-import type { SliderSectionType } from '../components/sections/Slider';
+import type { EditorialSectionType } from '../components/sections/editorial-section/types';
+import type { FeaturedBrandsSectionType } from '../components/sections/featured-brands';
+import type { FeaturedCollectionsSectionType } from '../components/sections/featured-collections/types';
+import type { SliderSectionType } from '../components/sections/hero-slider/types';
+import type { CarouselSectionType } from '../components/sections/products-carousel';
 import { collections } from './collections';
-import { editorial_mix } from './editorial';
-import highlights from './highlights';
+import { editorialMixed } from './editorial';
+import brands from './featured-brands';
 import { products } from './products';
 import { slides } from './slides';
 
@@ -29,9 +29,9 @@ export const data: HomeDataPayload[] = [
     products: products.men,
   },
   {
-    _type: 'slider',
+    _type: 'heroSlider',
     _id: 'slider',
-    slides: slides,
+    data: slides,
   },
   {
     _type: 'featuredCollections',
@@ -41,12 +41,12 @@ export const data: HomeDataPayload[] = [
   {
     _type: 'editorial',
     _id: 'editorial-focus-on-active',
-    edit: editorial_mix,
+    data: editorialMixed,
   },
   {
-    _type: 'highlights',
-    _id: 'highlights',
-    highlights: highlights,
+    _type: 'featuredBrands',
+    _id: 'brands',
+    data: brands,
   },
 ];
 
@@ -55,4 +55,4 @@ export type HomeDataPayload =
   | SliderSectionType
   | FeaturedCollectionsSectionType
   | EditorialSectionType
-  | HighlightsSectionType;
+  | FeaturedBrandsSectionType;

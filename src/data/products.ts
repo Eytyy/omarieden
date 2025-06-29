@@ -94,23 +94,6 @@ const menu_new = [
   },
 ];
 
-export type Designer = {
-  name: string;
-  slug: string;
-};
-
-export type Product = {
-  id: number;
-  name: string;
-  designer: Designer;
-  price: string;
-  mainImage: string;
-  backImage?: string;
-  slug: string;
-};
-
-export type Products = Product[];
-
 export const products = {
   men: menu_new,
   wommen: women_new,

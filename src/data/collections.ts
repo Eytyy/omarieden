@@ -26,17 +26,3 @@ export const collections = [
     slug: '/collections/acne',
   },
 ];
-
-export type CollectionType = {
-  title: {
-    en: string;
-    ar: string;
-  };
-  subtitle: {
-    en: string;
-    ar: string;
-  };
-  mainImage: string;
-  backImage: string;
-  slug: string;
-};

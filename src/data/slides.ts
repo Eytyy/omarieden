@@ -33,5 +33,3 @@ export const slides = [
     },
   },
 ];
-
-export type SlideType = (typeof slides)[number];
