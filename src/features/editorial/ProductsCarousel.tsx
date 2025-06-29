@@ -2,10 +2,9 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 import type { EditorialProduct } from './types';
-import { cn } from '@/lib/utils';
-import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
-
 import ProductCard from './ProductCard';
+import { usePrevNextButtons } from '@/hooks/usePrevNextButtons';
+import { cn } from '@/lib/utils';
 
 export default function ProductsCarousel({
   products,
@@ -57,14 +56,22 @@ function Controls({
   onNextButtonClick: () => void;
 }) {
   return (
-    <div className="absolute top-1/2 left-0 right-0 z-10 flex justify-between">
-      <button className="text-4xl" onClick={onPrevButtonClick} aria-label="Previous Slide">
+    <>
+      <button
+        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 left-0 z-10 text-4xl -translate-y-1/2 lg:right-4 lg:left-auto lg:rotate-90 lg:-translate-y-full"
+        onClick={onPrevButtonClick}
+        aria-label="Previous Slide"
+      >
         <MdKeyboardArrowLeft />
       </button>
-      <button className="text-4xl" onClick={onNextButtonClick} aria-label="Next Slide">
+      <button
+        className="2xl:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 z-10 text-4xl -translate-y-1/2 lg:rotate-90 lg:translate-y-0"
+        onClick={onNextButtonClick}
+        aria-label="Next Slide"
+      >
         <MdKeyboardArrowRight />
       </button>
-    </div>
+    </>
   );
 }
 
